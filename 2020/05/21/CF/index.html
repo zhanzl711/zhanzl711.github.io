@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/21/CF/pearsonSim.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/21/CF/last.png">
 <meta property="article:published_time" content="2020-05-21T12:03:50.000Z">
-<meta property="article:modified_time" content="2020-05-21T14:42:37.774Z">
+<meta property="article:modified_time" content="2020-05-22T06:07:46.808Z">
 <meta property="article:author" content="阿占">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/05/21/CF/cosSim.png">
@@ -188,9 +188,9 @@
 <h2 id="什么是协同过滤"><a href="#什么是协同过滤" class="headerlink" title="什么是协同过滤"></a>什么是协同过滤</h2><p>“协同过滤”就是协同大家的反馈、意见一起对海量的信息进行过滤，从中山选出目标用户可能感兴趣的信息的推荐过程。</p>
 <h2 id="推荐过程"><a href="#推荐过程" class="headerlink" title="推荐过程"></a>推荐过程</h2><p>摘自书中。</p>
 <p>（1）商品库一共有四件商品：游戏机、某小说、某杂志和某品牌电视机。</p>
-<p>（2）用户X访问该电商网站，电商网站的推荐系统需决定是否推荐电视机给用户X。为了进行这项预测，可以利用的数据有用户X对其他商品的历史评价数据，以及用户对其他商品的历史评价数据。</p>
+<p>（2）用户X访问该电商网站，电商网站的推荐系统需决定是否推荐电视机给用户X。为了进行这项预测，可以利用的数据有用户X对其他商品的历史评价数据，以及其他用户对商品的历史评价数据。</p>
 <p>（3）为了方便计算，将这些历史交互转化为矩阵的形式（称为共现矩阵），将用户作为矩阵的行坐标，商品作为列坐标，将用户交互行为数据作为矩阵中的数据（好评为1，差评为-1，没有交互为0或者有交互为1，没有为0）。</p>
-<p>（4）生成共现矩阵后，推荐问题就转为成预测矩阵中没有交互为数据。协同过滤的核心就是考虑与自己兴趣相似的用户的意见。所以，第一步就是找到与用户X兴趣最为相似的n个用户，然后综合相似用户对“电视机”评价的预测。</p>
+<p>（4）生成共现矩阵后，推荐问题就转为成预测矩阵中没有交互的数据。协同过滤的核心就是考虑与自己兴趣相似的用户的意见。所以，第一步就是找到与用户X兴趣最为相似的n个用户，然后综合相似用户对“电视机”评价的预测。</p>
 <p>（5）通过相似度和向量对最终结果进行排序，从而决定推荐系统是否向用户X推荐电视机。</p>
 <p>此过程中关于“用户相似度计算”和“最终结果的排序”是不严谨的。下面进行这两步的形式化定义。</p>
 <h3 id="相似度计算"><a href="#相似度计算" class="headerlink" title="相似度计算"></a>相似度计算</h3><p>在协同过滤的过程中，用户相似度（或者物品相似度）的计算是算法中最关键的一步。共现矩阵中的行向量代表相应用户的用户向量，那么计算用户i和用户j的相似度问题也就是用户向量i和用户向量j之间的相似度，两个向量之间常用的相似度计算方法有以下几种。</p>
@@ -317,6 +317,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/05/22/MF/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MF
+        
+      </div>
+    </a>
   
   
     <a href="/2020/05/21/SpringBoot%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
