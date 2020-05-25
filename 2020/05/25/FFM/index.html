@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/25/FFM/FFM1.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/25/FFM/FFM2.png">
 <meta property="article:published_time" content="2020-05-25T11:08:43.000Z">
-<meta property="article:modified_time" content="2020-05-25T12:49:43.473Z">
+<meta property="article:modified_time" content="2020-05-25T12:52:30.865Z">
 <meta property="article:author" content="阿占">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/05/25/FFM/FFM1.png">
@@ -188,7 +188,7 @@
 <p><img src="/2020/05/25/FFM/FFM1.png" alt></p>
 <p>上图是FFM的数学表达形式。其与FM的主要区别在于每个特征对应的不是唯一一个隐向量，而是一组隐向量。当特征xi与xj进行交叉时，xi特征会从xi的这一组隐向量中挑出与特征xj的域fj对应的隐向量Vi fj进行交叉。</p>
 <h2 id="域"><a href="#域" class="headerlink" title="域"></a>域</h2><p>简单的说，这里的“域”代表特征域，域内的特征一般采用的是one-hot编码形成的一段one-hot特征向量。将所有的特征域连接起来，就组成了样本的整体特征向量。</p>
-<h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><p>在Criteo FFM的论文中有一个具体的例子，假设在训练推荐模型过程中接收到的信赖你样本如下图所示。</p>
+<h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><p>在Criteo FFM的论文中有一个具体的例子，假设在训练推荐模型过程中接收到的训练样本如下图所示。</p>
 <p><img src="/2020/05/25/FFM/FFM2.png" alt></p>
 <p>其中，Publisher、Advertise、Gender为三个特征域，ESPN、Nike、Male分别是这第三个特征域的特征值。</p>
 <p>在FM中，特征ESPN、NIKE和Male都有对应的隐向量Wespn，Wnike，Wmale，那么ESPN特征与NIKE特征、ESPN特征与Male特征做交叉的权重应该是Wespn · Wnike和Wespn · Wmale。其中，ESPN对应的隐向量Wespn在两次特征交叉过程中是不变的。</p>
