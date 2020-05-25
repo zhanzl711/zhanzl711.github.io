@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>FFM | 阿占的小破站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="域因子分解机FFM模型相对于FM模型，引入了特征域感知这一概念，使模型的表达能力更强。  上图是FFM的数学表达形式。其与FM的主要区别在于每个特征对应的不是唯一一个隐向量，而是一组隐向量。当特征xi与xj进行交叉时，xi特征会从xi的这一组隐向量中挑出与特征xj的域fj对应的隐向量Vi fj进行交叉。 域简单的说，这里的“域”代表特征域，域内的特征一般采用的是one-hot编码形成的一段one-">
+  <meta name="description" content="域因子分解机">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FFM">
 <meta property="og:url" content="http://yoursite.com/2020/05/25/FFM/index.html">
 <meta property="og:site_name" content="阿占的小破站">
-<meta property="og:description" content="域因子分解机FFM模型相对于FM模型，引入了特征域感知这一概念，使模型的表达能力更强。  上图是FFM的数学表达形式。其与FM的主要区别在于每个特征对应的不是唯一一个隐向量，而是一组隐向量。当特征xi与xj进行交叉时，xi特征会从xi的这一组隐向量中挑出与特征xj的域fj对应的隐向量Vi fj进行交叉。 域简单的说，这里的“域”代表特征域，域内的特征一般采用的是one-hot编码形成的一段one-">
+<meta property="og:description" content="域因子分解机">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/05/25/FFM/FFM1.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/25/FFM/FFM2.png">
 <meta property="article:published_time" content="2020-05-25T11:08:43.000Z">
-<meta property="article:modified_time" content="2020-05-25T12:48:40.644Z">
+<meta property="article:modified_time" content="2020-05-25T12:49:43.473Z">
 <meta property="article:author" content="阿占">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/05/25/FFM/FFM1.png">
@@ -182,7 +182,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="域因子分解机"><a href="#域因子分解机" class="headerlink" title="域因子分解机"></a>域因子分解机</h1><p>FFM模型相对于FM模型，引入了特征域感知这一概念，使模型的表达能力更强。</p>
+        <h1 id="域因子分解机"><a href="#域因子分解机" class="headerlink" title="域因子分解机"></a>域因子分解机</h1><a id="more"></a>
+
+<p>FFM模型相对于FM模型，引入了特征域感知这一概念，使模型的表达能力更强。</p>
 <p><img src="/2020/05/25/FFM/FFM1.png" alt></p>
 <p>上图是FFM的数学表达形式。其与FM的主要区别在于每个特征对应的不是唯一一个隐向量，而是一组隐向量。当特征xi与xj进行交叉时，xi特征会从xi的这一组隐向量中挑出与特征xj的域fj对应的隐向量Vi fj进行交叉。</p>
 <h2 id="域"><a href="#域" class="headerlink" title="域"></a>域</h2><p>简单的说，这里的“域”代表特征域，域内的特征一般采用的是one-hot编码形成的一段one-hot特征向量。将所有的特征域连接起来，就组成了样本的整体特征向量。</p>
