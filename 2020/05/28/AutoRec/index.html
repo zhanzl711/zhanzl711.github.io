@@ -17,9 +17,9 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/05/28/AutoRec/Auto1.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/28/AutoRec/Auto2.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/28/AutoRec/D:%5Cbolg%5Csource_posts%5CAutoRec%5CAuto3.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/28/AutoRec/Auto3.png">
 <meta property="article:published_time" content="2020-05-28T10:24:49.000Z">
-<meta property="article:modified_time" content="2020-05-28T13:32:09.762Z">
+<meta property="article:modified_time" content="2020-05-28T13:33:50.057Z">
 <meta property="article:author" content="阿占">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/05/28/AutoRec/Auto1.png">
@@ -193,7 +193,7 @@
 <p><img src="/2020/05/28/AutoRec/Auto2.png" alt></p>
 <p>其中，f()和g()分别为输出层神经元和隐藏层神经元的激活函数。</p>
 <p>为了防止重构函数的过拟合，加入L2正则化项后，AutoRec目标函数的具体形式如下图。</p>
-<p><img src="/2020/05/28/AutoRec/D:%5Cbolg%5Csource_posts%5CAutoRec%5CAuto3.png" alt></p>
+<p><img src="/2020/05/28/AutoRec/Auto3.png" alt></p>
 <p>由于AutoRec模型是一个非常标准的三层神经网络，模型的训练利用反向传播即可完成。</p>
 <h2 id="基于AutoRec模型的推荐过程"><a href="#基于AutoRec模型的推荐过程" class="headerlink" title="基于AutoRec模型的推荐过程"></a>基于AutoRec模型的推荐过程</h2><p>基于AutoRec的推荐过程十分简单。当输入物品i的评分向量为r(i)时，模型的输出向量h(r(i);θ)就是所有用户对物品i的评分预测。通过遍历输入物品向量就可以得到用户u对所有物品的评分预测，进而根据评分预测排序得到推荐列表。</p>
 <p>与协同过滤算法一样，AutoRec也分为基于用户和基于用品的。基于用户的AutoRec相比基于物品的AutoRec的优势在于仅需输入一次目标用户的用户向量，就可以重建对所有物品的评分向量。也就是说，得到用户的推荐列表仅需一次模型推断过程；其劣势是用户向量的稀疏性可能会影响模型效果。</p>
