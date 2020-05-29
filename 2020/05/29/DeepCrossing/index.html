@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 阿占的小破站</title>
+  <title>DeepCrossing | 阿占的小破站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="阿占的小破站">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="DeepCrossing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DeepCrossing">
+<meta property="og:url" content="http://yoursite.com/2020/05/29/DeepCrossing/index.html">
 <meta property="og:site_name" content="阿占的小破站">
+<meta property="og:description" content="DeepCrossing">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/05/29/DeepCrossing/DC1.png">
+<meta property="article:published_time" content="2020-05-29T11:09:53.000Z">
+<meta property="article:modified_time" content="2020-05-29T12:07:05.789Z">
 <meta property="article:author" content="阿占">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/29/DeepCrossing/DC1.png">
   
     <link rel="alternative" href="/atom.xml" title="阿占的小破站" type="application/atom+xml">
   
@@ -155,294 +161,199 @@
           </div>
           <div id="js-content" class="content-ll">
             
+<article id="post-DeepCrossing" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      DeepCrossing
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/29/DeepCrossing/" class="archive-article-date">
+
+        
+        <a href="/2020/05/29/DeepCrossing/" class="archive-article-date">
   	<time datetime="2020-05-29T11:09:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/29/DeepCrossing/">DeepCrossing</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DeepCrossing"><a href="#DeepCrossing" class="headerlink" title="DeepCrossing"></a>DeepCrossing</h1><a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
-          
+<h2 id="DeepCrossing模型的应用场景"><a href="#DeepCrossing模型的应用场景" class="headerlink" title="DeepCrossing模型的应用场景"></a>DeepCrossing模型的应用场景</h2><p>DeepCrossing模型的应用场景是微软搜索引擎Bing中的搜索广告推荐场景。用户在搜索引擎中输入搜索词之后，搜索引擎除了会返回相关结果，还会返回与搜索词相关的广告，这也是大多数搜索引擎的主要盈利模式。尽可能地增加搜索广告的点击率，准确的预测广告点击率，这也是DeepCrossing模型的优化目标。</p>
+<p>针对该使用场景，微软使用的特征可以分为三类：</p>
+<p>一类是可以被处理成one-hot或者multi-hot向量的类别型特征，包括用户搜索词、广告关键词、广告标题、落地页、匹配类型；</p>
+<p>一类是数值型特征，包括点击率、预估点击率；</p>
+<p>一类是需要进一步处理的特征，包括广告计划、曝光样例、点击样例等。严格地说，这些都不是独立的特征，而是一个特征的组别，需要进一步处理。例如，可以将广告计划中的预算作为数值型特征，而广告计划中的id作为类别型特征。</p>
+<h2 id="DeepCrossing模型的网络结构"><a href="#DeepCrossing模型的网络结构" class="headerlink" title="DeepCrossing模型的网络结构"></a>DeepCrossing模型的网络结构</h2><p>为了完成端到端的训练，DeepCrossing模型需要解决以下问题。</p>
+<ul>
+<li>离散类特征编码后过于稀疏，不利于直接输入神经网络进行训练，如何解决稀疏特征向量稠密化的问题</li>
+<li>特征自动交叉组合的问题</li>
+<li>在输出层中达成问题设定的优化目标</li>
+</ul>
+<p>DeepCrossing模型分别设置了不同的神经网络层来解决以上的问题。</p>
+<p><img src="/2020/05/29/DeepCrossing/DC1.png" alt></p>
+<p>DeepCrossing模型结构如图所示，其网络结构主要包括4层：Embedding层、Stacking层、Multiple Residual Units层和Scoring层。</p>
+<p><strong>Embedding层：</strong>Embedding层的作用是将稀疏的类别型特征（one-hot向量）转换成稠密的Embedding向量。图中，Feature#2表示的是数值型特征，无需经过Embedding层直接进入Stacking层。</p>
+<p><strong>Stacking层：</strong>Stacking层的作用比较简单，就是把不同的Embedding特征和数值型特征拼接到一起，形成新的包含全部特征的特征向量。</p>
+<p><strong>Multiple Residual Units层：</strong>该层的主要结构是多层感知机，相比标准的以感知机为基本单元的神经网络，DeepCrossing模型采用了多层残差网络作为多层感知机的具体实现。通过多层残差网络对特征向量各个维度进行充分的交叉组合，使模型能够抓取到更多的非线性特征和组合特征的信息，进而使深度学习模型在表达能力上较传统的机器学习模型大为增强。</p>
+<p><strong>Scoring层：</strong>Scoring层作为输出层，就是为了拟合优化目标而存在的。对于CTR模型预估这类二分类问题，Scoring层往往使用的是逻辑回归模型，而对于图像分类等多分类问题，Scoring层往往采用softmax模型。</p>
+<p>以上便是DeepCrossing的模型结构，在此基础上采用梯度反向传播的方法进行训练，最终得到基于DeepCrossing的CTR预估模型。</p>
+<h2 id="DeepCrossing模型对特征交叉方法的革命"><a href="#DeepCrossing模型对特征交叉方法的革命" class="headerlink" title="DeepCrossing模型对特征交叉方法的革命"></a>DeepCrossing模型对特征交叉方法的革命</h2><p>DeepCrossing模型中没有任何人工特征工程的参与，原始特征经Embedding后输入神经网络层，将全部特征交叉的任务交给模型。相比之前的FM、FFM模型只具备二阶特征交叉的能力，DeepCrossing模型可以通过调整神经网络的深度进行特征之间的“深度交叉”，这也是DeepCrossing名称的由来。</p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zhanzl711.github.io/2020/05/29/DeepCrossing/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/28/AutoRec/" class="archive-article-date">
-  	<time datetime="2020-05-28T10:24:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-28</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/28/AutoRec/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AutoRec</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/28/AutoRec/">AutoRec</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DeepCrossing"><span class="toc-number">1.</span> <span class="toc-text">DeepCrossing</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DeepCrossing模型的应用场景"><span class="toc-number">1.1.</span> <span class="toc-text">DeepCrossing模型的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DeepCrossing模型的网络结构"><span class="toc-number">1.2.</span> <span class="toc-text">DeepCrossing模型的网络结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DeepCrossing模型对特征交叉方法的革命"><span class="toc-number">1.3.</span> <span class="toc-text">DeepCrossing模型对特征交叉方法的革命</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/27/LS-PLM/" class="archive-article-date">
-  	<time datetime="2020-05-27T10:19:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/27/LS-PLM/">LS-PLM</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/26/GBDT-LR/" class="archive-article-date">
-  	<time datetime="2020-05-26T11:52:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/26/GBDT-LR/">GBDT+LR</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/25/FFM/" class="archive-article-date">
-  	<time datetime="2020-05-25T11:08:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/25/FFM/">FFM</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/24/FM/" class="archive-article-date">
-  	<time datetime="2020-05-24T10:28:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/24/FM/">FM</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/23/LR/" class="archive-article-date">
-  	<time datetime="2020-05-23T12:18:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/LR/">LR</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/22/MF/" class="archive-article-date">
-  	<time datetime="2020-05-22T02:03:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/22/MF/">MF</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/21/CF/" class="archive-article-date">
-  	<time datetime="2020-05-21T12:03:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/21/CF/">CF</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/21/SpringBoot%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-05-21T05:55:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/21/SpringBoot%E7%AC%94%E8%AE%B0/">SpringBoot笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -470,8 +381,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
