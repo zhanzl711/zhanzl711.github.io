@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 阿占的小破站</title>
+  <title>FNN | 阿占的小破站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="阿占的小破站">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="FNN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FNN">
+<meta property="og:url" content="http://yoursite.com/2020/06/03/FNN/index.html">
 <meta property="og:site_name" content="阿占的小破站">
+<meta property="og:description" content="FNN">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/06/03/FNN/FNN1.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/03/FNN/FNN3.png">
+<meta property="article:published_time" content="2020-06-03T12:11:32.000Z">
+<meta property="article:modified_time" content="2020-06-03T13:10:44.189Z">
 <meta property="article:author" content="阿占">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/03/FNN/FNN1.png">
   
     <link rel="alternative" href="/atom.xml" title="阿占的小破站" type="application/atom+xml">
   
@@ -155,186 +162,193 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-FNN" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      FNN
+    </h1>
+  
+
+        
+        <a href="/2020/06/03/FNN/" class="archive-article-date">
+  	<time datetime="2020-06-03T12:11:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="FNN"><a href="#FNN" class="headerlink" title="FNN"></a>FNN</h1><a id="more"></a>
+
+<h2 id="FNN模型结构"><a href="#FNN模型结构" class="headerlink" title="FNN模型结构"></a>FNN模型结构</h2><p>FNN模型是2016年伦敦大学学院的研究人员提出的，其模型结构初步看是一个类似DeepCrossing模型的经典深度神经网络，从稀疏输入向量到稠密向量的转换过程也是经典的Embedding层的结构。</p>
+<p><img src="/2020/06/03/FNN/FNN1.png" alt></p>
+<p>问题的关键还在于Embedding层的改进。在神经网络的参数初始化过程中，往往采用随机初始化这种不包含任何先验信息的初始化方法。由于Embedding层的输入极端稀疏化，导致Embedding层的收敛速度非常缓慢。再加上Embedding层的参数数量往往占整个参数数量的大半以上，因此模型的收敛速度往往受限于Embedding层。</p>
+<h2 id="为什么Embedding层的收敛速度慢"><a href="#为什么Embedding层的收敛速度慢" class="headerlink" title="为什么Embedding层的收敛速度慢"></a>为什么Embedding层的收敛速度慢</h2><p>在深度学习网络中，Embedding层的作用是将稀疏输入向量转换成稠密向量，但Embedding层的存在往往会拖慢整个神经网络的收敛速度，主要有两个原因：</p>
+<ul>
+<li><strong>Embedding层的参数数量巨大</strong>：假设输入层的维度是100000，Embedding层的输出维度是32，上层再加5层32维的全连接层，最后输出层的维度是10，那么输出层到Embedding层的参数数量是3200000，其余所有层的参数总数是(32×32)×4+32×10=4416。那么，Embedding层的权重总数占比是3200000/（3200000+4416）=99.86%。也就是说，Embedding层的权重占了整个网络权重的绝大部分。所以，大部分的训练时间和计算开销都被Embedding层占据。</li>
+<li><strong>输入向量过于稀疏</strong>：在随机梯度下降的过程中，只有与非零特征连接的Embedding层权重会被更新，这进一步降低了Embedding层的收敛速度。</li>
+</ul>
+<h2 id="FNN模型的训练"><a href="#FNN模型的训练" class="headerlink" title="FNN模型的训练"></a>FNN模型的训练</h2><p>针对Embedding层收敛速度的难题，FNN模型的解决思路是用FM模型训练好的各特征向量初始化Embedding层的参数，相当于在初始化神经网络参数时，已经引入了有价值的先验信息。也就是说，神经网络训练的起点更接近目标最优点，自然加速了整个神经网络的收敛过程。</p>
+<p><img src="/2020/06/03/FNN/FNN3.png" alt></p>
+<p>上图用图示的方法显示FM各参数和FNN中Embedding层各参数的对应关系。</p>
+<p>需要注意的是，上图虽然把FM中的参数指向了Embedding层各神经元，但其具体意义是初始化Embedding神经元与输入神经元之间的连接权重。</p>
+<p>需要说明的是，在训练FM的过程中，并没有对特征与进行区分，但在FNN模型中，特征域被分成了不同特征域，因此每个特征域具有对应的Embedding层，并且每个特征域Embedding的维度都应与FM隐向量维度保持一致。</p>
+<p>FNN模型除了可以使用FM参数初始化Embedding的权重，也可以使用Embedding预训练的方式来进行初始化。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/24/FM/" class="archive-article-date">
-  	<time datetime="2020-05-24T10:28:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/24/FM/">FM</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zhanzl711.github.io/2020/06/03/FNN/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/23/LR/" class="archive-article-date">
-  	<time datetime="2020-05-23T12:18:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/02/Deep-Cross/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Deep&amp;Cross</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/LR/">LR</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FNN"><span class="toc-number">1.</span> <span class="toc-text">FNN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#FNN模型结构"><span class="toc-number">1.1.</span> <span class="toc-text">FNN模型结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么Embedding层的收敛速度慢"><span class="toc-number">1.2.</span> <span class="toc-text">为什么Embedding层的收敛速度慢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FNN模型的训练"><span class="toc-number">1.3.</span> <span class="toc-text">FNN模型的训练</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/22/MF/" class="archive-article-date">
-  	<time datetime="2020-05-22T02:03:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/22/MF/">MF</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/21/CF/" class="archive-article-date">
-  	<time datetime="2020-05-21T12:03:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/21/CF/">CF</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/21/SpringBoot%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-05-21T05:55:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/21/SpringBoot%E7%AC%94%E8%AE%B0/">SpringBoot笔记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2020-05-21T03:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -362,8 +376,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
