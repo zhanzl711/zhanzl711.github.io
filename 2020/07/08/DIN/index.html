@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/7 | 阿占的小破站</title>
+  <title>DIN | 阿占的小破站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="阿占的小破站">
-<meta property="og:url" content="http://yoursite.com/archives/2020/07/index.html">
+  <meta name="description" content="DIN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DIN">
+<meta property="og:url" content="http://yoursite.com/2020/07/08/DIN/index.html">
 <meta property="og:site_name" content="阿占的小破站">
+<meta property="og:description" content="DIN">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/07/08/DIN/DIN2.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/08/DIN/DIN1.png">
+<meta property="og:image" content="http://yoursite.com/2020/07/08/DIN/DIN3.png">
+<meta property="article:published_time" content="2020-07-08T13:43:33.000Z">
+<meta property="article:modified_time" content="2020-07-08T14:24:18.518Z">
 <meta property="article:author" content="阿占">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/08/DIN/DIN2.png">
   
     <link rel="alternative" href="/atom.xml" title="阿占的小破站" type="application/atom+xml">
   
@@ -155,102 +163,195 @@
           </div>
           <div id="js-content" class="content-ll">
             
+<article id="post-DIN" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      DIN
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/DIN/" class="archive-article-date">
+
+        
+        <a href="/2020/07/08/DIN/" class="archive-article-date">
   	<time datetime="2020-07-08T13:43:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/DIN/">DIN</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DIN"><a href="#DIN" class="headerlink" title="DIN"></a>DIN</h1><a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>阿里巴巴在其深度学习推荐模型中引入注意力机制，是一次基于业务观察的模型改进。相比于之前很多“学术风”的深度学习模型吸纳然更具业务气息。它的应用场景是阿里巴巴的电商广告推荐，因此在计算一个用户u是否点击一个广告a时，模型的输入特征自然分为两大部分：一部分是用户u的特征组（如下图的用户特征组所示）。无论是用户还是广告，都含有两个非常重要的特征–商品id和商铺id。用户特征里的商品id是一个序列，代表用户曾经点击过的商品集合，商铺id同理；而广告特征里的商品id和商铺id就是广告对应的商品id和商铺id（阿里巴巴平台上的广告大部分是参与推广计划的商品）。</p>
+<p><img src="/2020/07/08/DIN/DIN2.png" alt></p>
+<p><img src="/2020/07/08/DIN/DIN1.png" alt></p>
+<p>在原来的基础模型中（Base模型），用户特征组中的商品序列和商铺序列经过简单的平均池化操作后就进入上层神经网络进行下一步训练，序列中的商品既没有区分重要程度，也和广告特征中的商品id没有联系。</p>
+<p>然而事实上，广告特征和用户特征的关联程度是非常强的。假设广告中的商品是键盘，用户的点击商品序列中有几个不同的商品id，分别是鼠标、T恤和洗面奶。丛常识出发，”鼠标”这个历史商品id对预测“键盘”广告的点击率的重要程度应大于后两者。从模型的角度来说，在模型过程中投给不同特征的“注意力”理应有所不同，而且“注意力得分”的计算理应与广告特征有关性。</p>
+<p>将上述“注意力”的思想反映到模型中也是直观的。利用候选商品和历史行为商品之间的相关性计算出一个权重，这个权重就代表了“注意力”的强弱，加入了注意力权重的深度学习网络就是DIN模型，其中注意力部分的形式化表达如下图所示。</p>
+<p><img src="/2020/07/08/DIN/DIN3.png" alt></p>
+<p>其中Vu是用户的Embedding向量，VA是候选广告商品的Embedding向量，ej是用户u的第j次行为的Embedding向量。这里用户的行为就是浏览商店或商铺，因此行为的Embedding向量就是那次浏览的商品或店铺的Embedding向量。</p>
+<p>因为加入了注意力机制，所以Vu从过去ej的加和变成了ej的加权和，Vi的权重a就由ej和VA的关系决定，也就是a（ej，VA），即”注意力得分“。</p>
+<p>那么，a(ej,Va)函数到底采用什么形式比较好呢？答案是使用一个注意力激活单元来生成注意力得分。这个注意力激活单元本质上也是一个小的神经网络，其具体结构如上图右上角所示。</p>
+<p>可以看出，激活单元的输入层是两个Embedding向量，经过元素减操作后，与原Embedding向量一同连接后形成全连接层的输入，最后一通过单神经元输出层生成注意力得分。</p>
+<p>可以发现商铺id只跟用户历史行为中商铺id序列发生作用，商品id只跟用户的商品id序列发生作用，因为注意力的轻重更应该由同类信息的相关性决定。</p>
+<p>DIN模型与基于FM的AFM模型相比，是一次更经典的改进深度学习网络的尝试，而且由于出发点是具体的业务场景，也给推荐系统工程师更多实质性的启发。</p>
+<h1 id="注意力机制对推荐系统的启发"><a href="#注意力机制对推荐系统的启发" class="headerlink" title="注意力机制对推荐系统的启发"></a>注意力机制对推荐系统的启发</h1><p>注意力机制的数学形式上只是将过去的平均操作或加和操作换成了加权和或者加权平均操作。这一机制对深度学习推荐系统的启发是重大的。因为”注意力得分“的引入反映了人类天生的”注意力机制“特点。对这一机制的模拟，使得推荐系统更加接近于人类天生的”注意力机制“特点。对这一机制的模拟，使得推荐系统更加接近用户真实的思考过程，从而达到提升推荐效果的目的。</p>
+<p>从”注意力机制“开始，越来越多对深度学习模型结构的改进是基于对用户行为的深刻观察而得出。相比于学术界更加关注理论上的创新，业界的推荐系统工程师更需要基于对业务的理解来推进推荐模型的演化。</p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zhanzl711.github.io/2020/07/08/DIN/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/07/AFM/" class="archive-article-date">
-  	<time datetime="2020-07-07T13:13:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/07/AFM/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AFM</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/07/AFM/">AFM</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DIN"><span class="toc-number">1.</span> <span class="toc-text">DIN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意力机制对推荐系统的启发"><span class="toc-number">2.</span> <span class="toc-text">注意力机制对推荐系统的启发</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/06/NFM/" class="archive-article-date">
-  	<time datetime="2020-07-06T13:29:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/NFM/">NFM</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -277,8 +378,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
