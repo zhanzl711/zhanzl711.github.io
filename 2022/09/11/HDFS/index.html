@@ -6,23 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>零碎知识点 | 阿占的小破站</title>
+  <title>HDFS | 阿占的小破站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="零碎知识点">
+  <meta name="description" content="HDFS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="零碎知识点">
-<meta property="og:url" content="http://yoursite.com/2021/09/04/%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+<meta property="og:title" content="HDFS">
+<meta property="og:url" content="http://yoursite.com/2022/09/11/HDFS/index.html">
 <meta property="og:site_name" content="阿占的小破站">
-<meta property="og:description" content="零碎知识点">
+<meta property="og:description" content="HDFS">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2021/09/04/%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/threadLocal.png">
-<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20210905/115285789_1630825994806/4960906A9EF2ACC29E7A589BB21904A8">
-<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20210905/115285789_1630826010281/5F016A206CE29A10C1BB606EC95C92B7">
-<meta property="article:published_time" content="2021-09-04T12:44:46.000Z">
-<meta property="article:modified_time" content="2021-10-20T05:14:10.305Z">
+<meta property="og:image" content="http://yoursite.com/2022/09/11/HDFS/hdfsarchitecture.jpg">
+<meta property="og:image" content="http://yoursite.com/2022/09/11/HDFS/wjkdx14.jpg">
+<meta property="og:image" content="http://yoursite.com/2022/09/11/HDFS/xsjlc411.jpg">
+<meta property="og:image" content="http://yoursite.com/2022/09/11/HDFS/wltpjljs.jpg">
+<meta property="og:image" content="http://yoursite.com/2022/09/11/HDFS/fbjdxz.jpg">
+<meta property="og:image" content="http://yoursite.com/2022/09/11/HDFS/dsjlc.jpg">
+<meta property="og:image" content="http://yoursite.com/2022/09/11/HDFS/nngzjz.jpg">
+<meta property="og:image" content="http://yoursite.com/2022/09/11/HDFS/datanodegzjz.jpg">
+<meta property="og:image" content="http://yoursite.com/2022/09/11/HDFS/dxsxcssz.jpg">
+<meta property="article:published_time" content="2022-09-11T14:07:26.000Z">
+<meta property="article:modified_time" content="2022-09-12T06:30:22.637Z">
 <meta property="article:author" content="阿占">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2021/09/04/%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/threadLocal.png">
+<meta name="twitter:image" content="http://yoursite.com/2022/09/11/HDFS/hdfsarchitecture.jpg">
   
     <link rel="alternative" href="/atom.xml" title="阿占的小破站" type="application/atom+xml">
   
@@ -175,742 +182,285 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-零碎知识点" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-HDFS" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      零碎知识点
+      HDFS
     </h1>
   
 
         
-        <a href="/2021/09/04/%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2021-09-04T12:44:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-04</time>
+        <a href="/2022/09/11/HDFS/" class="archive-article-date">
+  	<time datetime="2022-09-11T14:07:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="零碎知识点"><a href="#零碎知识点" class="headerlink" title="零碎知识点"></a>零碎知识点</h1><a id="more"></a>
+        <h1 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h1><a id="more"></a>
 
-<h1 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h1><h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>注解的作用：</p>
+<h2 id="产生背景与意义"><a href="#产生背景与意义" class="headerlink" title="产生背景与意义"></a>产生背景与意义</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>随着数据量越来越大，在一个操作系统存不下所有的数据，那么就分配到更多的操作系统管理的磁盘中但是不方便管理和维护，迫切需要一种系统来管理多台机器上的文件，这就是分布式文件管理系统。HDFS只是分布式文件管理系统中的一种。</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>HDFS（Hadoop Distributed File System），它是一个文件系统，用于存储文件，通过目录树来定位文件；其次，它是分布式的，由很多服务器联合起来实现其功能，集群中的服务器有各自的角色。</p>
+<p>HDFS的使用场景：适合一次写入，多次读出的场景。一个文件经过创建、写入和关闭之后就不需要改变。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>1、高容错性</p>
+<p>​    数据自动保存多个副本，通过增加副本的形式，提高容错性。</p>
+<p>​    某一个副本丢失以后，它可以自动恢复</p>
+<p>2、适合处理大数据</p>
+<p>​    数据规模：能够处理数据规模达到GB、TB、甚至PB级别的数据</p>
+<p>​    文件规模：能够处理百万规模以上的文件数量，数量相当之大</p>
+<p>3、可构建在廉价机器上，通过多副本机制，提高可靠性</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>1、不适合低延时数据访问，比如毫秒级别的存储数据，是做不到的</p>
+<p>2、无法高效的对大量小文件进行存储</p>
 <ul>
-<li><p>不是程序本身，可以对程序做出解释</p>
+<li>存储大量小文件的话，它会占用NameNode大量的内存来存储文件目录和块信息。这样是不可取的，因为NameNode的内存总是有限的</li>
+<li>小文件存储的寻址时间会超过读取时间，它违反了HDFS的设计目标</li>
+</ul>
+<p>3、不支持并发写入、文件随机修改</p>
+<ul>
+<li>一个文件只能一个写，不允许多线程同时写</li>
+<li>仅支持数据的追加，不支持文件的随即修改</li>
+</ul>
+<h2 id="HDFS组成架构"><a href="#HDFS组成架构" class="headerlink" title="HDFS组成架构"></a>HDFS组成架构</h2><p><img src="/2022/09/11/HDFS/hdfsarchitecture.jpg" alt></p>
+<p>1、NameNode：就是Master，主管、管理者</p>
+<ul>
+<li><p>管理HDFS的名称空间</p>
 </li>
-<li><p>可以被其他程序（例如编译器）读取</p>
+<li><p>配置副本策略</p>
 </li>
-<li><p>可以在package、class、method、field等，相当于起辅助功能，我们可以通过反射机制编程实现对这些元数据的访问</p>
-<p><strong>元注解</strong>的作用就是负责注解其他注解</p>
+<li><p>管理数据块映射信息</p>
 </li>
-<li><p>@ Target：用于描述注解的使用范围（即被描述的注解可以用在什么地方） </p>
-</li>
-<li><p>@ Retention：表示需要在什么级别保存该注释信息，用于描述注解的生命周期 </p>
-</li>
-<li><p>@ Document：说明该注解将被包含在 Javadoc中</p>
-</li>
-<li><p>@ Inherited：说明子类可以继承父类中的该注解 </p>
+<li><p>处理客户端读写请求</p>
 </li>
 </ul>
-<p><strong>自定义注解</strong></p>
+<p>2、DataNode：就是Slave，NameNode下达命令，DataNode执行实际的操作</p>
 <ul>
-<li><p>使用@interface自定义注解时，自动继承了 java. lang annotation. Annotation接口</p>
+<li><p>存储实际的数据块</p>
 </li>
-<li><p>其中的每一个方法实际上是声明了一个配置参数 </p>
-</li>
-<li><p>方法的名称就是参数的名称 </p>
-</li>
-<li><p>返回值类型就是参数的类型（返回值只能是基本类型， Class, String,enum）</p>
-</li>
-<li><p>可以通过 default来声明参数的默认值 </p>
-</li>
-<li><p>如果只有一个参数成员，一般参数名为vaue </p>
-</li>
-<li><p>注解元素必须要有值，我们定义注解元素时，经常使用空字符串，0作为默认值</p>
+<li><p>执行数据块的读写操作</p>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCustomAnnotation</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 注解可以显示赋值,如果没有默认值,就必须给注解赋值</span></span><br><span class="line">    <span class="meta">@MyAnnotation</span>2(name = <span class="string">"王五"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@MyAnnotion</span>3(<span class="string">"subei"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Target</span>(value = ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(value = RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@interface</span> MyAnnotation2 &#123;</span><br><span class="line">    <span class="comment">// 注解的参数: 参数类型 + 参数名()</span></span><br><span class="line">    <span class="comment">// String name();</span></span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">age</span><span class="params">()</span> <span class="keyword">default</span> 0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">id</span><span class="params">()</span> <span class="keyword">default</span> -1</span>; <span class="comment">// -1代表不存在</span></span><br><span class="line">    String[] schools() <span class="keyword">default</span> &#123;<span class="string">"2222"</span>, <span class="string">"1111"</span>&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Target</span>(value = ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(value = RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@interface</span> MyAnnotion3&#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、Client：就是客户端</p>
+<ul>
+<li>文件切分。文件上传HDFS的时候，Client将文件切分成一个个的Block，然后上传</li>
+<li>与NameNode交互，获取文件的位置信息</li>
+<li>与DataNode交互，读取或写入数据</li>
+<li>Client提供一些命令来管理HDFS，比如NameNode格式化</li>
+<li>Client可以通过一些命令来访问HDFS，比如对HDFS增删改查操作</li>
+</ul>
+<p>4、Secondary NameNode：并非NameNode的热备。当NameNode挂掉的时候，它并不能马上替换NameNode并提供服务</p>
+<ul>
+<li>辅助NameNode，分担其工作量，比如定期合并Fsimage和Edits，并推送给NameNode</li>
+<li>在紧急情况下，可辅助恢复NameNode</li>
+</ul>
+<h2 id="HDFS文件块大小"><a href="#HDFS文件块大小" class="headerlink" title="HDFS文件块大小"></a>HDFS文件块大小</h2><p>HDFS中的文件在物理上是分块存储，块的大小可以通过配置参数(dfs.blocksize)来规定，默认大小在Hadoop2.x/3.x版本是128M，1.x版本是64M。</p>
+<p><img src="/2022/09/11/HDFS/wjkdx14.jpg" alt></p>
+<p>为什么块的大小不能设置太小，也不能设置太大？</p>
+<ul>
+<li>HDFS的块设置太小，会增加寻址时间，程序一直在找块的开始位置</li>
+<li>如果块设置的太大，从磁盘传输数据的时间会明显大于定位这个块的开始位置所需的时间。导致程序在处理这块数据时，会非常慢。</li>
+</ul>
+<p>总结：HDFS块的大小设置主要取决于磁盘传输速率</p>
+<h1 id="HDFS的Shell操作"><a href="#HDFS的Shell操作" class="headerlink" title="HDFS的Shell操作"></a>HDFS的Shell操作</h1><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>hadoop fs ${command}  OR  hdfs dfs ${command}</p>
+<p>两个是完全相同的</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>1、启动Hadoop集群</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-dfs.sh</span><br><span class="line">sbin/start-yarn.sh</span><br></pre></td></tr></table></figure>
 
+<p>2、-help：输出这个命令参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -help rm</span><br></pre></td></tr></table></figure>
 
+<p>3、创建/sanguo文件夹</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir /sanguo</span><br></pre></td></tr></table></figure>
 
-<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p>1、通过反射创建对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Class aClass=Class.forName(<span class="string">"com.ClassLoader.Demo.User"</span>);</span><br><span class="line">User user1=(User) aClass.newInstance();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 非只能用无参构造器创建对象，用有参构造器也可以</span></span><br><span class="line"><span class="comment">// 先通过Class类的getDeclaredConstructor(对应的参数)方法获得有参构造器</span></span><br><span class="line"><span class="comment">// 然后调用有参构造器的newInstance()方法,就可以创建实例了</span></span><br><span class="line"> Constructor constructor = aClass.getDeclaredConstructor(String<span class="class">.<span class="keyword">class</span>,<span class="title">int</span>.<span class="title">class</span>,<span class="title">double</span>.<span class="title">class</span>)</span>;</span><br><span class="line"> User user2=(User) constructor.newInstance(<span class="string">"xxx"</span>,xx,xx);<span class="comment">//参数数量要一致否则出现异常</span></span><br></pre></td></tr></table></figure>
+<h3 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h3><p>1、-moveFromLocal：从本地剪切粘贴到HDFS</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs  -moveFromLocal  ./shuguo.txt  /sanguo</span><br></pre></td></tr></table></figure>
 
-<p>2、通过反射，去操作实例的方法和属性 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过反射调用普通方法</span></span><br><span class="line">User user= (User) aClass.newInstance();</span><br><span class="line"><span class="comment">//通过反射获取一个方法</span></span><br><span class="line">Method setName=aClass.getDeclaredMethod(<span class="string">"setName"</span>, String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//inoke激活，将实例作为第一个参数传入，修改的数据作为第二个参数</span></span><br><span class="line">setName.invoke(user,<span class="string">"xxx"</span>);</span><br><span class="line">System.out.println(user.getName());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//通过反射操作属性，不能直接操作私有属性，可以通过关闭程序的安全检测关掉</span></span><br><span class="line">User user4=(User) aClass.newInstance();</span><br><span class="line">Field name=aClass.getDeclaredField(<span class="string">"name"</span>);</span><br><span class="line">name.setAccessible(<span class="keyword">true</span>);       <span class="comment">//可通过的意思。private修饰的变量有安全保护机制，</span></span><br><span class="line">name.set(user4,<span class="string">"xxx"</span>);</span><br><span class="line">System.out.println(user4.getName());</span><br></pre></td></tr></table></figure>
+<p>2、-copyFromLocal：从本地文件系统中拷贝文件到HDFS路径去</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -copyFromLocal weiguo.txt /sanguo</span><br></pre></td></tr></table></figure>
 
-<h2 id="Java如何实现多态"><a href="#Java如何实现多态" class="headerlink" title="Java如何实现多态"></a>Java如何实现多态</h2><p> 1、重写</p>
-<p>2、接口</p>
-<p>3、抽象类和抽象方法</p>
-<h2 id="抽象类与接口"><a href="#抽象类与接口" class="headerlink" title="抽象类与接口"></a>抽象类与接口</h2><p>相同点：</p>
-<ul>
-<li>都不能被实例化</li>
-<li>其子类（实现类）只有实现了其方法才能实例化</li>
-</ul>
-<p>不同点：</p>
-<ul>
-<li><p>接口只有定义，不能有方法的实现。（JDK1.7之后可以有默认的实现）抽象类方法可以有实现。</p>
-</li>
-<li><p>类可以实现多个接口，只能继承一个抽象类。</p>
-</li>
-<li><p>接口强调功能的实现，抽象类强调所属关系。</p>
-</li>
-<li><p>接口成员变量默认为<code>pulic static final</code>，必须赋初值，不能被修改，其所有方法都是public、abstract的。</p>
-<p>抽象类中的成员变量可以用public private protected修饰，也可以重新赋值。抽象方法被abstract修饰，不能用private（是用来被继承的，也不适合用default，用default不一定保证对子类可见）、static（static修饰的方法可以通过类名去访问该方法，在抽象类中无意义），synchronized（锁的是对象）等修饰符修饰。</p>
-</li>
-</ul>
-<h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h2><p>1、private 不能被外部类或对象直接使用。</p>
-<p>2、default 可以被同一包下的其他类使用。</p>
-<p>3、protected 可以被不同包下的子类使用，但不能被不同包下的其他类使用。</p>
-<p>4、public 可以被任何类调用。</p>
-<h2 id="int-a-3在内存中是怎么存的"><a href="#int-a-3在内存中是怎么存的" class="headerlink" title="int a = 3在内存中是怎么存的"></a>int a = 3在内存中是怎么存的</h2><p>首先在栈中创建一个变量名为a的引用，然后查找有没有字面值为3的地址，没有则开辟一个存放3这个字面值的地址，然后将a指向3的地址。</p>
-<h2 id="String为什么设置成不可变的"><a href="#String为什么设置成不可变的" class="headerlink" title="String为什么设置成不可变的"></a>String为什么设置成不可变的</h2><p>1、不可变性支持字符串常量池。这样在大量使用字符串的情况下，可以节约内存，提高效率。</p>
-<p>2、不可改变 – 执行效率高</p>
-<p>3、不可变支持线程安全。</p>
-<h2 id="HashMap的长度为什么是2的幂次方"><a href="#HashMap的长度为什么是2的幂次方" class="headerlink" title="HashMap的长度为什么是2的幂次方"></a>HashMap的长度为什么是2的幂次方</h2><p>计算机中直接求余的效率不如位运算，源码中做了优化，hash&amp;(length-1)</p>
-<p>hash%length == hash&amp;(length-1) 的前提是length是2的n次方。</p>
-<h2 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h2><p>1、和synchronized的对比</p>
-<p>都可以解决多线程并发访问的问题，不过两者处理的角度和思路不同。</p>
-<ul>
-<li>synchronized：同步机制采用时间换空间，只提供了一份变量，让不同的线程排队访问，侧重点是多线程之间访问资源的同步</li>
-<li>threadLocal：采用的是空间换时间，为每个线程提供一份变量的副本，从而实现同时访问而不互相干扰，侧重的是每个线程之间的数据相互隔离</li>
-</ul>
-<p>2、JDK8设计方案的两个好处</p>
-<p><img src="/2021/09/04/%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/threadLocal.png" alt></p>
-<ul>
-<li>每个Map存储的Entry数量变少</li>
-<li>Thread销毁的时候，对应的ThreadLocalMap也会随之销毁，减少了内存的使用</li>
-</ul>
-<p>3、key设置为强引用或弱引用都会内存泄漏，为什么设置成弱引用</p>
-<p>threadLocal避免内存泄漏的方式：</p>
-<ul>
-<li>使用完ThreadLocal，调用其remove方法删除对应的key。</li>
-<li>使用完ThreadLocal，当前Thread也随之运行结束（线程池不可用）</li>
-</ul>
-<p>ThreadLocalMap中的set/get方法中，会对key为null进行判断，如果是null，那么就会对value置为null。</p>
-<p>这意味着即使忘记调用remove方法，弱引用比强引用可以多一层保障：弱引用的ThreadLocal会被回收，对应的value在下一次ThreadLocalMap调用set，get，remove方法的时候就会被清除，从而避免内存泄漏。</p>
-<p>4、ThreadLocalMap中避免Hash冲突的方式。</p>
-<p>每创建一个ThreadLocal对象， nextHashCode的值会增长 0x61c88647 （这个值带来的好处就是hash分布非常均匀）。</p>
-<p>使用的线性探测法（开放定址法），除此之外，避免Hash冲突的方法还有拉链法</p>
-<h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><p>加载-&gt;连接(验证-&gt;准备-&gt;解析)-&gt;初始化</p>
-<p>加载（加载和连接的部分内容是交叉进行的，加载未结束，连接可能已经开始了）</p>
-<ul>
-<li>通过一个类的全限定名来获取定义此类的二进制字节流</li>
-<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。</li>
-<li>在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口。</li>
-</ul>
-<p>连接 ：连接阶段是正式为类变量分配内存并设置类变量初始值的阶段， 这些内存都将在方法区中分配。 </p>
-<ul>
-<li><p>验证： 确保被加载的类的正确性 </p>
-<p>文件格式验证：字节流是否符合Class文件格式规范，如：是否以魔数0xCAFEBABE开头、主次版本号是否在当前虚拟机处理范围内等。</p>
-<p>元数据验证：对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言规范要求；如：这个类是否有父类，是否实现了父类的抽象方法，是否重写了父类的final方法等。</p>
-<p>字节码验证：通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的，如：方法中的类型转换是否有效。</p>
-<p>符号引用验证：确保解析动作能正确执行，如：通过符号引用能找到对应的类和方法。</p>
-</li>
-<li><p>准备：为类的静态变量分配内存，并将其赋默认值 ，对final修饰的静态变量直接赋值。</p>
-</li>
-<li><p>解析：将常量池中的符号引用替换为直接引用（内存地址）的过程 </p>
-</li>
-</ul>
-<p>初始化：为类的静态变量赋初值</p>
-<p>clinit是类构造器， 主要作用是在类加载过程中的初始化阶段进行执行， 执行内容包括静态变量初始化和静态块的执行。 </p>
-<p> init指的是实例构造器，主要作用是在类实例化过程中执行，执行内容包括成员变量初始化和代码块的执行。 </p>
-<h2 id="对象创建的过程"><a href="#对象创建的过程" class="headerlink" title="对象创建的过程"></a>对象创建的过程</h2><p>1、类加载检查</p>
-<p>首先检查这个指令的参数能否在常量池中定位到这个类的符号引用，并检查这个符号引用代表的类是否已经被加载、解析和初始化过。有则直接引用，没有则必须先执行相应的类加载过程。</p>
-<p>2、分配内存</p>
-<p>对象所需的内存在类加载检查过程中可以确定，分配内存等同于把一块确定大小的内存从Java堆中划分出来。分配方式有“指针碰撞”和“空闲列表”两种。</p>
-<ul>
-<li>指针碰撞：堆中的内存是绝对规整的，所有用过的内存都放在一边，空闲的都放在另一边，中间放着一个指针作为分界点的指示器，那么分配内存就仅仅是把那个指针向空闲空间挪动一段与对象大小相等的距离。</li>
-<li>空闲列表：堆中的内存并不是规整的，已使用的和未使用的空间相互交错，没办法使用指针碰撞。虚拟机就必须维护一个列表，记录哪些内存块是可用的，分配的时候从列表中找到一块足够大的空间划分给实例，并更新列表上的记录。</li>
-</ul>
-<p>3、初始化零值</p>
-<p>内存分配完成后，虚拟机需要将分配到的内存空间都初始化为零值（不包括对象头）， 这一步操作保证了对象的实例字段在 Java 代码中可以不赋初始值就直接使用，程序能访问到这些字段的数据类型所对应的零值。 </p>
-<p>4、设置对象头</p>
-<p>初始化零值完成之后，虚拟机要对对象进行必要的设置，将一些信息设置到对象头。</p>
-<p>对象头存放的信息：</p>
-<ul>
-<li>对象自身的运行时数据(哈希码、GC分代年龄、锁状态标志等)</li>
-<li>类型指针，对象指向它的类元数据的指针，虚拟机通过这个指针来确定这个对象是哪个类的实例。</li>
-</ul>
-<p>5、执行init方法</p>
-<p>执行完new指令之后会接着执行init方法，把对象按照程序员的意愿进行初始化。</p>
-<p><strong>对象的内存布局</strong>：</p>
-<p>对象头（如上）</p>
-<p>实例数据部分：存储对象真正的有效信息</p>
-<p>对齐填充部分：无实际意义，仅占位作用。Hotspot 虚拟机的自动内存管理系统要求，对象的大小必须是 8 字节的整数倍 。</p>
-<h2 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h2><p>1、句柄</p>
-<p>Java堆中划分出一块内存作为句柄，reference中存储的就是对象的句柄地址，句柄中包含了对象实例数据与类型数据各自的具体地址信息。</p>
-<p>2、直接指针</p>
-<p>reference中存储的对象的地址，对象实例数据中存放到对象类型数据的指针。</p>
-<p>优缺点：</p>
-<p>句柄的好处：reference中存储的是稳定的句柄地址，对象被移动是只会修改句柄中实例数据指针，而reference本身不需要修改。</p>
-<p>直接指针的好处：速度快，节省了一次指针定位的时间开销。</p>
-<h2 id="判断对象是否废弃"><a href="#判断对象是否废弃" class="headerlink" title="判断对象是否废弃"></a>判断对象是否废弃</h2><p>1、常量：如果当前没有任何对象引用改常量的话，说明常量就是废弃常量。此时发生内存回收且有必要的话，常量就被清理出常量池了。</p>
-<p>2、类：满足以下三个条件。</p>
-<ul>
-<li>该类所有的实例都已经被回收，也就是 Java 堆中不存在该类的任何实例 。</li>
-<li>加载该类的 <code>ClassLoader</code> 已经被回收 </li>
-<li>该类对应的 <code>java.lang.Class</code> 对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法 </li>
-</ul>
-<h2 id="逃逸分析"><a href="#逃逸分析" class="headerlink" title="逃逸分析"></a>逃逸分析</h2><p>对象不一定分配在堆中，JVM通过逃逸分析，那些逃不出方法的对象会在栈上分配。</p>
-<p>一个对象的指针被多个方法或线程引用时，那么就称这个对象的指针发生了逃逸。</p>
-<h2 id="BIO、NIO"><a href="#BIO、NIO" class="headerlink" title="BIO、NIO"></a>BIO、NIO</h2><p>BIO是同步阻塞模型，每次请求的时候会一直阻塞。</p>
-<p>NIO是同步非阻塞模型，他会采用轮询的方式查看数据是否准备好，但这种方式是很耗CPU资源的。</p>
-<p>多路复用IO模型，不用每次IO请求都创建一个线程。有一个多路复用器，就是一个单独的线程用来轮询是否真正需要进行IO操作。</p>
-<h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><h2 id="CMS收集器"><a href="#CMS收集器" class="headerlink" title="CMS收集器"></a>CMS收集器</h2><p> CMS 收集器是一种 <strong>“标记-清除”算法</strong>实现的 ， 它的运作过程大概分为四步：</p>
-<ul>
-<li><strong>初始标记：</strong> 暂停所有的其他线程，并记录下直接与 root 相连的对象，速度很快 ；</li>
-<li><strong>并发标记：</strong> 同时开启 GC 和用户线程，用一个闭包结构去记录可达对象。但在这个阶段结束，这个闭包结构并不能保证包含当前所有的可达对象。因为用户线程可能会不断的更新引用域，所以 GC 线程无法保证可达性分析的实时性。所以这个算法里会跟踪记录这些发生引用更新的地方。</li>
-<li><strong>重新标记：</strong> 重新标记阶段就是为了修正并发标记期间因为用户程序继续运行而导致标记产生变动的那一部分对象的标记记录，这个阶段的停顿时间一般会比初始标记阶段的时间稍长，远远比并发标记阶段时间短</li>
-<li><strong>并发清除：</strong> 开启用户线程，同时 GC 线程开始对未标记的区域做清扫。</li>
-</ul>
-<h2 id="G1收集器"><a href="#G1收集器" class="headerlink" title="G1收集器"></a>G1收集器</h2><p>G1 (Garbage-First) 是一款面向服务器的垃圾收集器,主要针对配备多颗处理器及大容量内存的机器. 以极高概率满足 GC 停顿时间要求的同时,还具备高吞吐量性能特征</p>
-<p>特点：</p>
-<ul>
-<li><strong>并行与并发</strong>：G1 能充分利用 CPU、多核环境下的硬件优势，使用多个 CPU（CPU 或者 CPU 核心）来缩短 Stop-The-World 停顿时间。部分其他收集器原本需要停顿 Java 线程执行的 GC 动作，G1 收集器仍然可以通过并发的方式让 java 程序继续执行。</li>
-<li><strong>分代收集</strong>：虽然 G1 可以不需要其他收集器配合就能独立管理整个 GC 堆，但是还是保留了分代的概念。</li>
-<li><strong>空间整合</strong>：与 CMS 的“标记-清理”算法不同，G1 从整体来看是基于“标记-整理”算法实现的收集器；从局部上来看是基于“标记-复制”算法实现的。</li>
-<li><strong>可预测的停顿</strong>：这是 G1 相对于 CMS 的另一个大优势，降低停顿时间是 G1 和 CMS 共同的关注点，但 G1 除了追求低停顿外，还能建立可预测的停顿时间模型，能让使用者明确指定在一个长度为 M 毫秒的时间片段内。</li>
-</ul>
-<p>G1 收集器的运作大致分为以下几个步骤：</p>
-<ul>
-<li><strong>初始标记</strong></li>
-<li><strong>并发标记</strong></li>
-<li><strong>最终标记</strong></li>
-<li><strong>筛选回收</strong></li>
-</ul>
-<p>G1 收集器在后台维护了一个优先列表，每次根据允许的收集时间，优先选择回收价值最大的 Region(这也就是它的名字 Garbage-First 的由来)。</p>
-<h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><h2 id="数据库三大范式"><a href="#数据库三大范式" class="headerlink" title="数据库三大范式"></a>数据库三大范式</h2><p>1、属性不可再分</p>
-<p>2、非主属性对于码无部份依赖</p>
-<p>3、非主属性对于码无传递函数依赖</p>
-<h2 id="为什么MySQL选择B-数做索引"><a href="#为什么MySQL选择B-数做索引" class="headerlink" title="为什么MySQL选择B+数做索引"></a>为什么MySQL选择B+数做索引</h2><p>1、 B+树的磁盘读写代价更低：B+树的内部节点并没有指向关键字具体信息的指针，因此其内部节点相对B树更小，如果把所有同一内部节点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多，一次性读入内存的需要查找的关键字也就越多，相对IO读写次数就降低了。 </p>
-<p> 2、B+树的查询效率更加稳定：由于非终结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引。所以任何关键字的查找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率相当。 </p>
-<p> 3、B+树更便于遍历：由于B+树的数据都存储在叶子结点中，分支结点均为索引，方便扫库，只需要扫一遍叶子结点即可，但是B树因为其分支结点同样存储着数据，我们要找到具体的数据，需要进行一次中序遍历按序来扫，所以B+树更加适合在区间查询的情况，所以通常B+树用于数据库索引。 </p>
-<p> 4、B+树更适合基于范围的查询：B树在提高了IO性能的同时并没有解决元素遍历的我效率低下的问题，正是为了解决这个问题，B+树应用而生。B+树只需要去遍历叶子节点就可以实现整棵树的遍历。而且在数据库中基于范围的查询是非常频繁的，而B树不支持这样的操作或者说效率太低。 </p>
-<h2 id="索引的分类"><a href="#索引的分类" class="headerlink" title="索引的分类"></a>索引的分类</h2><p>1、按照存储结构来划分：BTree索引，Hash索引、全文索引</p>
-<p>2、从应用层次来分：普通索引、唯一索引、复合索引</p>
-<p>3、数据的物理顺序与键值的逻辑顺序：聚集索引、非聚集索引</p>
-<h2 id="索引什么时候会失效"><a href="#索引什么时候会失效" class="headerlink" title="索引什么时候会失效"></a>索引什么时候会失效</h2><p>1、 如果条件中有or，即使其中有条件带索引也不会使用(这也是为什么尽量少用or的原因) </p>
-<p>2、 对于多列索引，不是使用的第一部分，则不会使用索引</p>
-<p>3、 like查询是以%开头 </p>
-<p>4、 如果列类型是字符串，那一定要在条件中将数据使用引号引用起来,否则不使用索引 </p>
-<p>5、 如果mysql估计使用全表扫描要比使用索引快,则不使用索引 </p>
-<h2 id="Mysql中一条查询语句如何执行"><a href="#Mysql中一条查询语句如何执行" class="headerlink" title="Mysql中一条查询语句如何执行"></a>Mysql中一条查询语句如何执行</h2><p>1、取得链接，使用使用到 MySQL 中的连接器。  </p>
-<p>2、查询缓存，key 为 SQL 语句，value 为查询结果，如果查到就直接返回。  </p>
-<p>3、分析器，分为词法分析和语法分析。此阶段只是做一些 SQL 解析，语法校验。  </p>
-<p>4、优化器，是在表里有多个索引的时候，决定使用哪个索引；或者一个语句中存在多表关联的时候（join），决定各个表的连接顺序。  </p>
-<p>5、执行器，通过分析器让 SQL 知道你要干啥，通过优化器知道该怎么做，于是开始执行语句。  </p>
-<h2 id="Mysql锁升级"><a href="#Mysql锁升级" class="headerlink" title="Mysql锁升级"></a>Mysql锁升级</h2><ul>
-<li>MySQL 行锁只能加在索引上，如果操作不走索引，就会升级为表锁。因为 InnoDB 的行锁是加在索引上的，如果不走索引，自然就没法使用行锁了，原因是 InnoDB 是将 primary key index和相关的行数据共同放在 B+ 树的叶节点。InnoDB 一定会有一个 primary key，secondary index 查找的时候，也是通过找到对应的 primary，再找对应的数据行。  </li>
-<li>当非唯一索引上记录数超过一定数量时，行锁也会升级为表锁。测试发现当非唯一索引相同的内容不少于整个表记录的二分之一时会升级为表锁。因为当非唯一索引相同的内容达到整个记录的二分之一时，索引需要的性能比全文检索还要大，查询语句优化时会选择不走索引，造成索引失效，行锁自然就会升级为表锁。  </li>
-</ul>
-<h2 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h2><p>隐式转换会导致索引不可用！</p>
-<p>等号两边类型不一致会发生隐式转换， cast(index_filed as signed)，然后和2进行比较。因为’2’，’2’，’2a’都会转化成2 ，故Mysql无法使用索引只能全表扫描。</p>
-<p>发生隐式转换的情况：</p>
-<ul>
-<li>如果字符串的第一个字符就是非数字的字符，那么转换为数字就是0</li>
-<li>如果字符串以数字开头 <ul>
-<li>如果字符串中都是数字，那么转换为数字就是整个字符串对应的数字</li>
-<li>如果字符串中存在非数字，那么转换为的数字就是开头的那些数字对应的值</li>
-</ul>
-</li>
-</ul>
-<h2 id="SQL分类"><a href="#SQL分类" class="headerlink" title="SQL分类"></a>SQL分类</h2><ul>
-<li>数据查询语言(DQL)： 负责进行数据查询而不会对数据本身进行修改的语句，这是最基本的SQL语句。 </li>
-<li>数据定义语言(DDL)： 负责数据结构定义与数据库对象定义的语言，由CREATE、ALTER与DROP三个语法所组成。</li>
-<li>数据操纵语言(DML)： 负责对数据库对象运行数据访问工作的指令集，以INSERT、UPDATE、DELETE三种指令为核心 </li>
-<li>事务处理语言(TPL)： 它的语句能确保被DML语句影响的表的所有行及时得以更新。TPL语句包括BEGIN TRANSACTION，COMMIT和ROLLBACK。 </li>
-<li>数据控制语言(DCL)： 一种可对数据访问权进行控制的指令，它可以控制特定用户账户对数据表、查看表、预存程序、用户自定义函数等数据库对象的控制权。 有GRANT和REVOKE两个指令组成。</li>
-<li>指针控制语言(CCL)： 用于对一个或多个表单独行的操作。</li>
-</ul>
-<h2 id="InnoDB是如何实现事务的"><a href="#InnoDB是如何实现事务的" class="headerlink" title="InnoDB是如何实现事务的"></a>InnoDB是如何实现事务的</h2><p>通过Buffer Poll，LogBuffer，RedoLog，UndoLog来实现事务</p>
-<p>1、收到一个update语句后，会根据条件找到数据所在的页</p>
-<p>2、执行update语句，修改BufferPoll中的数据，也就是内存中的数据</p>
-<p>3、针对update语句生成一个RedoLog对象，并存入LogBuffer中</p>
-<p>4、针对update语句生成undolog日志，用于事务回滚</p>
-<p>5、事务提交，则把RedoLog对象进行持久化，后续还有其他机制将BufferPool中所修改的数据页持久化到磁盘中</p>
-<p>6、如果事务回滚，则利用undolog日志进行回滚</p>
-<h2 id="索引下推"><a href="#索引下推" class="headerlink" title="索引下推"></a>索引下推</h2><p>索引下推（index condition pushdown ）简称ICP，在Mysql5.6的版本上推出，用于优化查询。 </p>
-<p>在不使用ICP的情况下，在使用非主键索引进行查询时，存储引擎通过索引检索到数据，然后返回给MySQL服务器，服务器然后判断数据是否符合条件 。</p>
-<p>在使用ICP的情况下，如果存在某些被索引的列的判断条件时，MySQL服务器将这一部分判断条件传递给存储引擎，然后由存储引擎通过判断索引是否符合MySQL服务器传递的条件，只有当索引符合条件时才会将数据检索出来返回给MySQL服务器。</p>
-<p>索引条件下推优化可以减少存储引擎查询基础表的次数，也可以减少MySQL服务器从存储引擎接收数据的次数。 </p>
-<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="线程间是如何通信的"><a href="#线程间是如何通信的" class="headerlink" title="线程间是如何通信的"></a>线程间是如何通信的</h2><p>共享内存和消息传递</p>
-<ul>
-<li><p>共享内存</p>
-<p>在共享内存的并发模型里，线程之间共享程序的公共状态，线程之间通过写-读内存中的公共状态来隐式进行通信。典型的内存通信方式，就是通过共享内存通信。</p>
-</li>
-<li><p>消息传递</p>
-<p>在消息传递的并发模型里，线程之间没有公共状态，线程之间必须通过明确的发送信息来显示进行通信。Java中典型的消息传递方式：wait()和notify()，或者BlockingQueue。</p>
-</li>
-</ul>
-<h2 id="实现多线程的几种方法"><a href="#实现多线程的几种方法" class="headerlink" title="实现多线程的几种方法"></a>实现多线程的几种方法</h2><ul>
-<li>继承Thread类</li>
-<li>实现Runnable接口</li>
-<li>实现Callable接口<ul>
-<li>可以定义方法的返回值，可以声明抛出异常</li>
-</ul>
-</li>
-<li>线程池方式创建</li>
-</ul>
-<h2 id="synchronized和ReentrantLock"><a href="#synchronized和ReentrantLock" class="headerlink" title="synchronized和ReentrantLock"></a>synchronized和ReentrantLock</h2><p>Synchronized进过编译，会在同步块的前后分别形成monitorenter和monitorexit这个两个字节码指令。（monitor是依赖于底层的操作系统的Mutex Lock来实现的，效率低）在执行monitorenter指令时，首先要尝试获取对象锁。如果这个对象没被锁定，或者当前线程已经拥有了那个对象锁，把锁的计算器加1，相应的，在执行monitorexit指令时会将锁计算器就减1，当计算器为0时，锁就被释放了。如果获取对象锁失败，那当前线程就要阻塞，直到对象锁被另一个线程释放为止。  </p>
-<p>相比Synchronized，ReentrantLock类提供了一些高级功能，主要有以下3项：  </p>
-<p>1、等待可中断，持有锁的线程长期不释放的时候，正在等待的线程可以选择放弃等待，这相当Synchronized来说可以避免出现死锁的情况。  </p>
-<p>2、可实现公平锁</p>
-<p>3、锁绑定多个条件，一个ReentrantLock对象可以同时绑定对个对象。</p>
-<p>##　ConCurrentHashMap如何保证线程安全</p>
-<p>数组用volatile修饰，是为了Node数组在扩容的时候对其他线程可见。</p>
-<p>get方法：全程不需要加锁，用volatile修饰Node的元素和next指针。</p>
-<p>1、根据hash值计算位置。</p>
-<p>2、查找到指定位置，如果头节点就是要找的，直接返回其value。</p>
-<p>3、如果头节点hash值小于0，说明 正在扩容或者是红黑树，查找之。 </p>
-<p>4、 如果是链表，遍历查找之 。</p>
-<p>put方法：锁的是链表的头节点。锁之前的操作是基于volatile和CAS之上无锁并且线程安全的。</p>
-<p>1、 根据 key 计算出 hashcode 。</p>
-<p>2、 判断是否需要进行初始化，如果由多个线程同时进行put， 在初始化数组时使用了乐观锁CAS操作来决定到底是哪个线程有资格进行初始化，其他线程均只能等待（Thread.yeild）。</p>
-<p>3、 即为当前 key 定位出的 Node，如果为空表示当前位置可以写入数据，利用 CAS 尝试写入，失败则自旋保证成功 。</p>
-<p>4、 如果当前位置的 <code>hashcode == MOVED == -1</code>,则需要进行扩容 。</p>
-<p>5、如果都不满足，则利用 synchronized 锁写入数据 。</p>
-<p>6、 如果数量大于 <code>TREEIFY_THRESHOLD</code> 则要转换为红黑树 。</p>
-<h2 id="ConCurrentHashMap的扩容机制"><a href="#ConCurrentHashMap的扩容机制" class="headerlink" title="ConCurrentHashMap的扩容机制"></a>ConCurrentHashMap的扩容机制</h2><p>1、在某个线程进行put时，如果发现正在扩容，该线程会一起进行扩容</p>
-<p>2、如果某个线程put时，发现没有正在进行扩容，则将key-value插入，然后判断是否超过阈值，超过了则进行扩容</p>
-<p>3、支持多个线程同时扩容</p>
-<p>4、扩容之前也先生成一个新的数组</p>
-<p>5、在转移元素时，先将原数组分组，将每组分给不同的线程来进行元素的转移，每个线程负责一组或多组的元素转移工作</p>
-<h2 id="ConcurrentHashMap的size"><a href="#ConcurrentHashMap的size" class="headerlink" title="ConcurrentHashMap的size"></a>ConcurrentHashMap的size</h2><p>使用一个volatile类型的变量baseCount记录元素的个数 ，当插入新数据put()或则删除数据remove()时，会通过addCount()方法更新baseCount: </p>
-<p>counterCells存储的都是value为1的CounterCell对象，而这些对象是因为在CAS更新baseCounter值时，由于高并发而导致失败，最终将值保存到CounterCell中，放到counterCells里。这也就是为什么sumCount()中需要遍历counterCells数组，sum累加CounterCell.value值了。  </p>
-<h2 id="volatile关键字"><a href="#volatile关键字" class="headerlink" title="volatile关键字"></a>volatile关键字</h2><p><strong>如何保证可见性</strong></p>
-<ul>
-<li>如果对声明了volatile的变量进行写操作，JVM就会向处理器发送一条指令，将这个变量所在缓存行的数据写回到系统内存。  但是，就算写回到内存，如果其他处理器缓存的值还是旧的，再执行计算操作就会有问题。 </li>
-<li>在多处理器下，为了保证各个处理器的缓存是一致的，就会实现缓存一致性协议，当某个CPU在写数据时，如果发现操作的变量是共享变量，则会通知其他CPU告知该变量的缓存行是无效的，因此其他CPU在读取该变量时，发现其无效会重新从主存中加载数据。 </li>
-</ul>
-<p><strong>如何保证有序性</strong></p>
-<p>有序性的保证就是通过禁止指令重排序来实现的。指令重排序包括编译器和处理器重排序，JMM会分别限制这两种指令重排序。 </p>
-<p>指令重排是通过<strong>加内存屏障</strong>来实现的。（重排序时不能将后面的指令排序到内存屏障之前） JMM为volatile加内存屏障有以下4种情况： </p>
-<p>在每个volatile写操作的前面插入一个StoreStore屏障，防止写volatile与后面的写操作重排序。<br>在每个volatile写操作的后面插入一个StoreLoad屏障，防止写volatile与后面的读操作重排序。<br>在每个volatile读操作的前面插入一个LoadLoad屏障，防止读volatile与后面的读操作重排序。<br>在每个volatile读操作的后面插入一个LoadStore屏障，防止读volatile与后面的写操作重排序。</p>
-<p><strong>为什么不能保证原子性</strong></p>
-<p>简单的说，修改volatile变量分为四步：</p>
-<p>1、读取volatile变量到local</p>
-<p>2、修改变量值</p>
-<p>3、local值写回</p>
-<p>4、插入内存屏障，即lock指令，让其他线程可见</p>
-<p>这样就很容易看出来，前三步都是不安全的，取值和写回之间，不能保证没有其他线程修改。原子性需要锁来保证。 </p>
-<h2 id="对线程池的理解"><a href="#对线程池的理解" class="headerlink" title="对线程池的理解"></a>对线程池的理解</h2><p>1、使用线程池的好处</p>
-<ul>
-<li>降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。</li>
-<li>提高响应速度。当任务到达时，任务可以不需要等到线程创建就能立即执行。</li>
-<li>提高线程的可管理性。线程池可以对线程进行统一的分配，调优和监控。</li>
-</ul>
-<p>2、线程池的使用</p>
-<p>ThreadPoolExcutor xx = new ThreadPoolExecutor()</p>
-<p>核心参数：</p>
-<ul>
-<li><p><strong>corePoolSize</strong>：核心线程数，也就是正常情况下创建工作的线程数，这些线程创建后并不会消除，而是一种常驻线程。</p>
-</li>
-<li><p><strong>maxinumPoolSize</strong>：最大线程数，表示最大允许被创建的线程数。当任务很多，将核心线程数用完了，还是无法满足需求时，此时就会创建新的线程，但是线程池内线程总数不会超过最大线程数。</p>
-</li>
-<li><p><strong>keepAliveTime</strong>：超出核心线程数之外的线程的空闲存活时间。</p>
-</li>
-<li><p><strong>TimeUnit</strong>：一个时间类型的枚举类。有从纳秒到天的时间量度，配合上面的keepAliveTime确定非核心线程的存活时间。</p>
-</li>
-<li><p><strong>workQueue</strong>：用来存放待执行的任务，假设核心线程都已被使用，还有任务进来则全部放入队列，直到整个队列被放满但任务还再持续进入则会创建新的线程</p>
-</li>
-<li><p><strong>ThreadFactory</strong>：线程工厂，用来生产线程执行任务。可以使用默认的创建工厂，产生的线程都在一个组内，拥有相同的优先级，且都不是守护线程。也可以选择自定义线程工厂，一般根据业务置定不同工厂。</p>
-<p>一个创建线程的接口，里面只有一个创建线程的方法，设置名字，设置线程参数。</p>
-</li>
-<li><p><strong>Handler</strong>：任务拒绝策略。两种情况，第一种是掉用shutdown等方法关闭线程池后，这时候即使线程池内部还有没执行完的任务正在执行，由于线程池已经关闭，我们再继续向线程池提交任务就会被拒绝。另一种是达到最大线程数，线程池已经没有能力处理新提交的任务时，拒绝。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 四种拒绝策略：</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * new ThreadPoolExecutor.AbortPolicy() </span></span><br><span class="line"><span class="comment"> * 银行满了，还有人进来，不处理这个人的，抛出异常</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * new ThreadPoolExecutor.CallerRunsPolicy() </span></span><br><span class="line"><span class="comment"> * 哪来的去哪里！比如你爸爸 让你去通知妈妈洗衣服，妈妈拒绝，让你回去通知爸爸洗</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * new ThreadPoolExecutor.DiscardPolicy() </span></span><br><span class="line"><span class="comment"> * 队列满了，丢掉任务，不会抛出异常！</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * new ThreadPoolExecutor.DiscardOldestPolicy() </span></span><br><span class="line"><span class="comment"> * 队列满了，尝试去和最早的竞争，也不会抛出异常！</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<p>3、-put：等同于copyFromLocal，生产环境更习惯用put</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put ./wuguo.txt /sanguo</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<p><strong>IO密集型和CPU密集型线程数的选择</strong></p>
-<p>1、CPU密集型： cpu使用率较高（也就是一些复杂运算，逻辑处理），所以线程数一般只需要cpu核数的线程就可以了。 </p>
-<p>2、CPU使用率较低，程序中会存在大量I/O操作占据时间，导致线程空余时间出来，所以通常就需要开cpu核数的两倍的线程， 当线程进行I/O操作cpu空暇时启用其他线程继续使用cpu，提高cpu使用率 通过上述可以总结出：线程的最佳数量： 最佳线程数目 = （（线程等待时间+线程CPU时间）/线程CPU时间 ）* CPU数目 线程等待时间所占比例越高，需要越多线程。线程CPU时间所占比例越高，需要越少线程。</p>
-<p><strong>线程池的生命周期</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RUNNING    = -<span class="number">1</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SHUTDOWN   =  <span class="number">0</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STOP       =  <span class="number">1</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TIDYING    =  <span class="number">2</span> &lt;&lt; COUNT_BITS;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TERMINATED =  <span class="number">3</span> &lt;&lt; COUNT_BITS;</span><br></pre></td></tr></table></figure>
+<p>4、-appendToFile：追加一个文件到已经存在的文件末尾</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -appendToFile liubei.txt /sanguo/shuguo.txt</span><br></pre></td></tr></table></figure>
 
-<p>构造前是初始状态，一旦完成构造线程池就进入了RUNNING状态。</p>
-<p>这几个状态的转化关系为：</p>
-<p>1、调用shundown()方法线程池的状态由RUNNING——&gt;SHUTDOWN</p>
-<p>2、调用shutdowNow()方法线程池的状态由RUNNING——&gt;STOP</p>
-<p>3、当任务队列和线程池均为空的时候 线程池的状态由STOP/SHUTDOWN——–&gt;TIDYING</p>
-<p>4、当terminated()方法被调用完成之后，线程池的状态由TIDYING———-&gt;TERMINATED状态</p>
-<p><strong>Executors与ThreadPoolExecutor的区别</strong></p>
-<p>Executors创建的线程有四种：</p>
-<table>
-<thead>
-<tr>
-<th align="left"></th>
-<th>Cached</th>
-<th>Fixed</th>
-<th>Scheduled</th>
-<th>Single</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">核心线程</td>
-<td>没有核心线程，都是非核心</td>
-<td>全是核心线程，没有非核心</td>
-<td>核心线程数固定，非核心线程没有限制</td>
-<td>只有一个核心线程</td>
-</tr>
-<tr>
-<td align="left">线程数</td>
-<td>可以无限创建</td>
-<td>核心线程数固定</td>
-<td>核心线程数固定，非核心线程数无限</td>
-<td>只有一个核心线程</td>
-</tr>
-<tr>
-<td align="left">空闲存活时间</td>
-<td>60s</td>
-<td>无</td>
-<td>0s，空闲立即回收</td>
-<td>就一个线程</td>
-</tr>
-<tr>
-<td align="left">阻塞队列</td>
-<td>无</td>
-<td>无界阻塞队列</td>
-<td>无</td>
-<td>无界阻塞队列</td>
-</tr>
-<tr>
-<td align="left">适用场景</td>
-<td>任务量大耗时少</td>
-<td>任务量固定，耗时长</td>
-<td>定时任务和具体固定周期的重复任务</td>
-<td>多个任务顺序执行</td>
-</tr>
-</tbody></table>
-<h2 id="线程复用的原理"><a href="#线程复用的原理" class="headerlink" title="线程复用的原理"></a>线程复用的原理</h2><p>线程池中，有一个线程可以从阻塞队列中不断获取新任务来执行，其核心原理是对Thread进行了封装，并不是每次都是调用Thread.start()来创建新线程，而是让每个线程去执行一个“循环任务”,不停检查是否有任务需要被执行，如果有则直接执行，也就是直接调用run方法，将run方法当成一个普通方法执行，通过这种方式只是用固定的线程就将所有的run方法串联起来。</p>
-<h2 id="阻塞队列"><a href="#阻塞队列" class="headerlink" title="阻塞队列"></a>阻塞队列</h2><p>作用：</p>
-<p>1、阻塞队列可以保证队列中没有任务时，阻塞获取任务的线程，使其进入wait状态，释放cpu资源。</p>
-<p>2、在创建新线程的时候，是要获取全局锁的，这个时候其他的就得阻塞，影响整体效率。</p>
-<p>设置时要注意：</p>
-<p>1、不能设置的过大或过小，过大时可能会造成OOM，过小时会拒绝新提交的任务，可能造成数据丢失。</p>
-<p>2、如果是CPU密集型，可以设置容量较大的队列和较小的最大线程数，就可以减少上下文切换带来的开销。如果是IO密集型，可以设置较小的队列和较大的最大线程数，这样整体的效率更高，不过也会带来更多的上下文切换。</p>
-<h2 id="父子进程"><a href="#父子进程" class="headerlink" title="父子进程"></a>父子进程</h2><p> Linux系统中创建进程需要消耗较大资源，所以使用fork函数生成一个子进程，子进程的PCB(进程控制块)会复制父进程的数据！ </p>
-<p> 在进程结束后，Linux系统会自动回收进程消耗的 内存和IO，但是进程本身占用的资源(task_struct和栈内存)不会被回收，需要被父进程来进行回收 。</p>
-<p>（1）僵尸进程： 子进程比父进程先结束。如果父进程没有显示调用wait或waitpid函数的话，会直到父进程结束时才会回收子进程的资源！这样的子进程，就是僵尸进程！ </p>
-<p>（2）孤儿进程： 父进程先于子进程结束，子进程于是成为进程1(init进程)的子进程，直到关机才会回收！ </p>
-<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><ul>
-<li><p>原理</p>
-<p>CompareAndSwap，比较并交换，主要是通过处理器的指令来保证操作的原子性，它包含三个操作数：变量的内存地址、旧的预期值、准备设置的新值。只有当内存地址的值与旧的预期值相同时，才会将内存地址的值设置为新值。</p>
-</li>
-<li><p>缺点</p>
-<ul>
-<li>ABA问题：可以通过设置版本号、添加时间戳来解决。</li>
-<li>循环时间长开销大：自旋CAS的方式如果长时间不成功，会给CPU带来很大的开销</li>
-<li>只能保证一个共享变量的原子操作：多个可以通过AtomicReference来处理或者使用synchronized实现。</li>
-</ul>
-</li>
-</ul>
-<h2 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h2><p>AQS 核心思想</p>
-<ul>
-<li><p>如果被请求的共享资源空闲，则将当前请求资源的线程设置为有效的工作线程，并且将共享资源设置为锁定状态。</p>
-</li>
-<li><p>如果被请求的共享资源被占用，那么就需要一套线程阻塞等待以及被唤醒时锁分配的机制，这个机制 AQS 是用 CLH 队列（虚拟的双向队列）锁实现的，即将暂时获取不到锁的线程加入到队列中。</p>
-</li>
-</ul>
-<p>AQS 使用一个 int 成员变量来表示同步状态，通过内置的 FIFO 队列来完成获取资源线程的排队工作。AQS 使用 CAS 对该同步状态进行原子操作实现对其值的修改。 </p>
-<p>AQS定义两种资源共享方式</p>
-<ul>
-<li>Exclusive（独占）：只有一个线程能执行，如ReentrantLock。</li>
-<li>Share（共享）：多个线程可同时执行，如 <code>CountDownLatch</code>、<code>Semaphore</code>、 <code>CyclicBarrier</code>、<code>ReadWriteLock</code> 。</li>
-</ul>
-<p>常用组件：</p>
-<ul>
-<li><strong><code>Semaphore</code>(信号量)-允许多个线程同时访问：</strong> <code>synchronized</code> 和 <code>ReentrantLock</code> 都是一次只允许一个线程访问某个资源，<code>Semaphore</code>(信号量)可以指定多个线程同时访问某个资源。</li>
-<li><strong><code>CountDownLatch</code>（倒计时器）：</strong> <code>CountDownLatch</code> 是一个同步工具类，用来协调多个线程之间的同步。这个工具通常用来控制线程等待，它可以让某一个线程等待直到倒计时结束，再开始执行。</li>
-<li><strong><code>CyclicBarrier</code>(循环栅栏)：</strong> <code>CyclicBarrier</code> 和 <code>CountDownLatch</code> 非常类似，它也可以实现线程间的技术等待，但是它的功能比 <code>CountDownLatch</code> 更加复杂和强大。主要应用场景和 <code>CountDownLatch</code> 类似。<code>CyclicBarrier</code> 的字面意思是可循环使用（<code>Cyclic</code>）的屏障（<code>Barrier</code>）。它要做的事情是，让一组线程到达一个屏障（也可以叫同步点）时被阻塞，直到最后一个线程到达屏障时，屏障才会开门，所有被屏障拦截的线程才会继续干活。<code>CyclicBarrier</code> 默认的构造方法是 <code>CyclicBarrier(int parties)</code>，其参数表示屏障拦截的线程数量，每个线程调用 <code>await()</code> 方法告诉 <code>CyclicBarrier</code> 我已经到达了屏障，然后当前线程被阻塞。 </li>
-</ul>
-<h2 id="锁粗化和锁消除"><a href="#锁粗化和锁消除" class="headerlink" title="锁粗化和锁消除"></a>锁粗化和锁消除</h2><p>锁粗化： 将临近的同步 代码块用同一个锁合并起来。 </p>
-<p>锁消除： 虚拟机的运行时编译器在运行时如果检测到一些要求同步的代码上不可能发生共享数据竞争，则会去掉这些锁。 </p>
-<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="Autowired和Resource注解的区别"><a href="#Autowired和Resource注解的区别" class="headerlink" title="Autowired和Resource注解的区别"></a>Autowired和Resource注解的区别</h2><p>1、共同点</p>
-<p>两者都可以写在字段和setter方法上。两者如果都写在字段上，那么就不需要再写setter方法。  </p>
-<p>2、不同点</p>
-<p>@Autowire是Spring提供的注解，只按照byType注入，如果想按照名称来装配，可以结合@Qualifier注解一起使用。</p>
-<p>@Resource默认按照ByName自动注入，如果想使用byType，设置type属性即可。</p>
-<p>@Resource装配顺序：</p>
-<p>1、同时指定了name和type，则从Spring上下文中找到唯一匹配的bean进行装配，找不到则抛出异常。</p>
-<p>2、指定了name，则从上下文中查找id匹配的bean进行装配。</p>
-<p>3、指定了type，则从上下文中找到唯一匹配的type进行装配，找不到或者找到多个，都会抛出异常。</p>
-<p>4、都没指定，自动按照byName，没有匹配，则回退一个原始类型进行匹配。</p>
-<h2 id="依赖注入的方式"><a href="#依赖注入的方式" class="headerlink" title="依赖注入的方式"></a>依赖注入的方式</h2><p>1、构造器注入：通过构造函数的参数注入给依赖对象，并且在初始化对象的时候注入。</p>
-<p>优点：对象初始化完成之后便可获得可使用的对象。</p>
-<p>缺点：注入的对象很多时，构造器参数列表会很长。若有多种注入方式，每种方式只需注入指定几个依赖，那么就需要提供多个重载的构造函数。</p>
-<p>2、  setter方法注入： IoC Service Provider通过调用成员变量提供的setter函数将被依赖对象注入给依赖类。  </p>
-<p>优点： 灵活。可以选择性地注入需要的对象。<br>缺点： 依赖对象初始化完成后由于尚未注入被依赖对象，因此还不能使用。  </p>
-<p>3、  接口注入：依赖类必须要实现指定的接口，然后实现该接口中的一个函数，该函数就是用于依赖<br>注入。该函数的参数就是要注入的对象。  </p>
-<p>优点：接口注入中，接口的名字、函数的名字都不重要，只要保证函数的参数是要注入的对象类型即<br>可。<br>缺点：侵入行太强，不建议使用。  </p>
-<h2 id="Spring循环依赖"><a href="#Spring循环依赖" class="headerlink" title="Spring循环依赖"></a>Spring循环依赖</h2><p>A对象有属性对象B，B对象有属性对象A。</p>
-<p>解决方案：提前曝光，放到缓存</p>
-<p>创建A的Bean，把A的Bean放到缓存池中，由于A的Bean依赖B的Bean，B的Bean不存在，去创建B的Bean，B的Bean依赖A的Bean，可以直接去缓存拿，B创建完成，A创建完成。</p>
-<p>如果A的原始对象诸如给B的属性之后，A的原始对象进行了AOP产生了一个代理对象，此时对A而言，他的Bean对象其实应该是AOP之后的代理对象，B的A属性对应的并不是AOP之后的代理对象，这就产生了冲突。B依赖的A对象和最终的A对象不是一个对象。</p>
-<p>在Bean的生命周期最后，Spring提供了BeanPostProcessor可以去对Bean进行加工，这个加工不仅仅只是能修改Bean的属性值，也可以替换掉当前Bean。也会产生B依赖的A对象和最终的A对象不是一个对象。</p>
-<p><strong>Spring三级缓存</strong></p>
-<p>SpringAOP的一般过程：A类-&gt;生成一个普通对象-&gt;属性注入-&gt;基于切面生成一个代理对象-&gt;把代理对象放到单例池中</p>
-<p>三级缓存：</p>
-<ul>
-<li>singletonObjects：缓存某个beanName对应的经过了完整的生命周期的bean</li>
-<li>earlySingletonObjects：缓存提前拿原始对象进行了AOP之后得到的代理对象，原始对象还没有进行属性注入和后续的BeanPostProcessor等生命周期</li>
-<li>singletonFactories：缓存的是一个ObjectFactory，主要用来去生成原始对象进行了AOP之后得到的代理对象，在每个Bean的生成过程中，都会提前暴露一个工厂，这个工厂可能用到，也可能用不到，如果没有出现循环依赖的Bean，那么这个工厂无用，如果出现了循环依赖依赖了本bean，则另外那个bean执行ObjectFactory提交得到的一个AOP之后的代理对象。</li>
-</ul>
-<p>还有一个缓存是earlyProxyReference，它用来记录某个原始对象是否进行了AOP。</p>
-<h2 id="Spring中的事务是如何实现的"><a href="#Spring中的事务是如何实现的" class="headerlink" title="Spring中的事务是如何实现的"></a>Spring中的事务是如何实现的</h2><p>1、Spring事务底层是基于数据库事务和AOP机制的</p>
-<p>2、首先对于使用了@Transaction注解的Bean，Spring会创建一个代理对象作为Bean</p>
-<p>3、当调用代理对象的方法时，会先判断方法上是否加了@Transaction注解</p>
-<p>4、加了则利用事务管理器创建一个数据库连接</p>
-<p>5、修改数据库连接的autocommit属性为false，禁止自动提交</p>
-<p>6、执行当前方法，方法中执行sql</p>
-<p>7、执行完没有异常，直接提交事务</p>
-<p>8、有异常并且需要回滚时回滚，否则仍提交事务</p>
-<p>9、Spring事务的隔离级别对应是就是数据库的隔离级别</p>
-<h2 id="Spring容器启动流程"><a href="#Spring容器启动流程" class="headerlink" title="Spring容器启动流程"></a>Spring容器启动流程</h2><p>1、创建Spring容器</p>
-<p>2、扫描得到所有的BeanDefinition对象，放到一个map中</p>
-<p>3、筛选出非懒加载的单例BeanDefinition进行创建Bean，多例Bean会在每次获取Bean时利用BeanDefinition去创建</p>
-<p>4、利用BeanDefinition创建Bean就是创建bean的生命周期</p>
-<p>5、单例bean创建完成之后，Spring会发布一个容器启动时间</p>
-<p>6、Spring启动结束</p>
-<h2 id="Spring处理全局异常的方式"><a href="#Spring处理全局异常的方式" class="headerlink" title="Spring处理全局异常的方式"></a>Spring处理全局异常的方式</h2><ul>
-<li><p>使用Spring MVC提供的SimpleMappingExceptionResolver</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"</span>&gt;  </span><br><span class="line">  &lt;!-- 定义默认的异常处理页面，当该异常类型的注册时使用 --&gt; </span><br><span class="line">  &lt;property name="defaultErrorView" value="error"&gt;&lt;/property&gt;  </span><br><span class="line">  &lt;!-- 定义异常处理页面用来获取异常信息的变量名，默认名为exception --&gt; </span><br><span class="line">  &lt;property name="exceptionAttribute" value="ex"&gt;&lt;/property&gt;  </span><br><span class="line">&lt;!-- 定义需要特殊处理的异常，用类名或完全路径名作为key，异常也页名作为值 --&gt; </span><br><span class="line">&lt;property name=<span class="string">"exceptionMappings"</span>&gt;  </span><br><span class="line">&lt;props&gt;  </span><br><span class="line">&lt;prop key="IOException"&gt;error/ioexp&lt;/prop&gt;  </span><br><span class="line">&lt;prop key="java.sql.SQLException"&gt;error/sqlexp&lt;/prop&gt;  </span><br><span class="line">&lt;/props&gt;  </span><br><span class="line">&lt;/property&gt;  </span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实现Spring的异常处理接口HandlerExceptionResolver 自定义自己的异常处理器</p>
-<ul>
-<li>定义一个类实现HandlerExceptionResolver接口</li>
-<li>加入spring的配置中 </li>
-<li>只要实现了 HandlerExceptionResovler这个接口，Spring都会拦截下异常进行处理。 </li>
-</ul>
-</li>
-<li><p>使用@ExceptionHandler注解实现异常处理</p>
-</li>
-</ul>
-<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h2><p>1、RDB：</p>
-<p>Redis 是单线程模型，如果进行文件 IO，那么就要阻塞线上业务。为了一边持久化，一边处理业务请求。Redis 使用操作系统的多进程 COW 机制来实现快照持久化。 </p>
-<p> COW（Copy On Write）机制<br>当fork时只复制页表，因此fork之后父子进程的地址空间指向的是相同的物理内存页。如果父子进程都不需要修改彼此的页(也就是只读)，则共享即可满足，因此将对应的页都标记为只读访问。只有两者中有一个进程要进行修改相应的物理页(也就是写操作)，则会引发页错误。内核检测该页错误是否是因为对只读页面进行写操作引发的，如果是的话则处理该异常：拷贝该页面的内容到一个新的物理页，并设置其为可写，将新的物理页分配给正在写的进程，即修改该进程的页表中对应的这一页，重新执行写操作。 </p>
-<p>2、AOF</p>
-<p>AOF 日志存储的是 Redis 服务器的顺序指令序列，AOF 日志只记录对内存进行修改的指令记录。 </p>
-<p>Redis 在长期运行过程中，AOF 的日志会越来越长。 </p>
-<p>Redis 提供了 bgrewriteaof 指令用于对 AOF 日志进行瘦身，原理就是开辟一个子进程对内存进行遍历，转换成一系列 Redis 的操作指令，序列化到一个新的 AOF 日志文件中。序列化完毕后再将操作期间发生的增量 AOF 日志追加到这个新的 AOF 日志文件中，追加完毕后就立即替代旧的 AOF 日志文件。 </p>
-<h2 id="Redis实现分布式锁"><a href="#Redis实现分布式锁" class="headerlink" title="Redis实现分布式锁"></a>Redis实现分布式锁</h2><p>1、利用setnx命令 + del key命令，加锁解锁。</p>
-<p>问题：如果业务抛出异常没有及时释放锁，进程挂了，没有机会释放锁。</p>
-<p>2、给锁设置一个过期时间，set key value ex 10 nx，在finally层释放锁。</p>
-<p>问题： 业务执行的时间超过了锁的过期时间，导致锁被人拿走，然后自己执行到finally把别人锁释放掉。 </p>
-<p>3、加锁时，设置自己的唯一标识（UUID）。释放掉锁前判断（注意命令保证原子性） </p>
-<p>问题： 锁过期时间不好判断 </p>
-<p>4、Redisson是一个Java语言实现的Redis SDK客户端，Redisson 封装了很多易用的功能 可重入锁、乐观锁、公平锁、读写锁、Redlock。 使用Redisson，它采用了自动续期的方案来避免锁过期，也就是看门狗线程。 </p>
-<p>问题： 以上的场景都是锁在单个Redis实例可能产生的问题，Redis集群是AP，在master-salve模式中异步赋值会造成信息丢失，锁丢失。 </p>
-<p>5、放弃master-salve模式，引入N个节点，官方建议是5个。客户端超过半数的redis实例才算获取到锁。 </p>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="进程和线程、协程的区别"><a href="#进程和线程、协程的区别" class="headerlink" title="进程和线程、协程的区别"></a>进程和线程、协程的区别</h2><p>1、进程： 进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动,进程是系统进行资源分配和调度的一个独立单位。每个进程都有自己的独立内存空间，不同进程通过进程间通信来通信。由于进程比较重量，占据独立的内存，所以上下文进程间的切换开销（栈、寄存器、虚拟内存、文件句柄等）比较大，但相对比较稳定安全。 </p>
-<p>2、线程： 线程是进程的一个实体,是CPU调度和分派的基本单位,它是比进程更小的能独立运行的基本单位.线程自己基本上不拥有系统资源,只拥有一点在运行中必不可少的资源(如程序计数器,一组寄存器和栈),但是它可与同属一个进程的其他的线程共享进程所拥有的全部资源。线程间通信主要通过共享内存，上下文切换很快，资源开销较少，但相比进程不够稳定容易丢失数据。 </p>
-<p>3、协程： 协程是一种用户态的轻量级线程，协程的调度完全由用户控制。协程拥有自己的寄存器上下文和栈。协程调度切换时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈，直接操作栈则基本没有内核切换的开销，可以不加锁的访问全局变量，所以上下文的切换非常快。 </p>
-<h2 id="TCP如何保证可靠传输"><a href="#TCP如何保证可靠传输" class="headerlink" title="TCP如何保证可靠传输"></a>TCP如何保证可靠传输</h2><ul>
-<li><p>校验和：在发送端和接收端分别计算数据的校验和，如果两者不一致，则说明数据在传输过程中出现了差错，TCP将丢弃和不确认此报文段。</p>
-</li>
-<li><p>序列号：TCP会对每一个发送的字节进行编号，接收方接到数据后，会对发送方发送确认应答(ACK报文)，并且这个ACK报文中带有相应的确认编号，告诉发送方，下一次发送的数据从编号多少开始发。如果发送方发送相同的数据，接收端也可以通过序列号判断出，直接将数据丢弃。</p>
-</li>
-<li><p>超时重传：在上面说了序列号的作用，但如果发送方在发送数据后一段时间内（可以设置重传计时器规定这段时间）没有收到确认序号ACK，那么发送方就会重新发送数据。</p>
-<p>这里发送方没有收到ACK可以分两种情况，如果是发送方发送的数据包丢失了，接收方收到发送方重新发送的数据包后会马上给发送方发送ACK；如果是接收方之前接收到了发送方发送的数据包，而返回给发送方的ACK丢失了，这种情况，发送方重传后，接收方会直接丢弃发送方冲重传的数据包，然后再次发送ACK响应报文。</p>
-<p>如果数据被重发之后还是没有收到接收方的确认应答，则进行再次发送。此时，等待确认应答的时间将会以2倍、4倍的指数函数延长，直到最后关闭连接。</p>
-</li>
-<li><p>流量控制：如果发送端发送的数据太快，接收端来不及接收就会出现丢包问题。为了解决这个问题，TCP协议利用了滑动窗口进行了流量控制。在TCP首部有一个16位字段大小的窗口，窗口的大小就是接收端接收数据缓冲区的剩余大小。接收端会在收到数据包后发送ACK报文时，将自己的窗口大小填入ACK中，发送方会根据ACK报文中的窗口大小进而控制发送速度。如果窗口大小为零，发送方会停止发送数据。</p>
-</li>
-<li><p>拥塞控制：如果网络出现拥塞，则会产生丢包等问题，这时发送方会将丢失的数据包继续重传，网络拥塞会更加严重，所以在网络出现拥塞时应注意控制发送方的发送数据，降低整个网络的拥塞程度。拥塞控制主要有四部分组成：慢开始、拥塞避免、快重传、快恢复，如下图(图片来源于网络)。</p>
-<p><img src="https://uploadfiles.nowcoder.com/images/20210905/115285789_1630825994806/4960906A9EF2ACC29E7A589BB21904A8" alt="图片说明"> 这里的发送方会维护一个拥塞窗口的状态变量，它和流量控制的滑动窗口是不一样的，滑动窗口是根据接收方数据缓冲区大小确定的，而拥塞窗口是根据网络的拥塞情况动态确定的，一般来说发送方真实的发送窗口为滑动窗口和拥塞窗口中的最小值。</p>
-<ol>
-<li><p>慢开始：为了避免一开始发送大量的数据而产生网络阻塞，会先初始化cwnd为1，当收到ACK后到下一个传输轮次，cwnd为2，以此类推成指数形式增长。</p>
-</li>
-<li><p>拥塞避免：因为cwnd的数量在慢开始是指数增长的，为了防止cwnd数量过大而导致网络阻塞，会设置一个慢开始的门限值ssthresh，当cwnd&gt;=ssthresh时，进入到拥塞避免阶段，cwnd每个传输轮次加1。但网络出现超时，会将门限值ssthresh变为出现超时cwnd数值的一半，cwnd重新设置为1，如上图，在第12轮出现超时后，cwnd变为1，ssthresh变为12。</p>
-</li>
-<li><p>快重传：在网络中如果出现超时或者阻塞，则按慢开始和拥塞避免算法进行调整。但如果只是丢失某一个报文段，如下图(图片来源于网络)，则使用快重传算法。</p>
-<p><img src="https://uploadfiles.nowcoder.com/images/20210905/115285789_1630826010281/5F016A206CE29A10C1BB606EC95C92B7" alt="图片说明"> 从上图可知，接收方正确地接收到M1和M2，而M3丢失，由于没有接收到M3，在接收方收到M5、M6和M7时，并不会进行确认，也就是不会发送ACK。这时根据前面说的保证TCP可靠性传输中的序列号的作用，接收方这时不会接收M5，M6，M7，接收方可以什么都不会，因为发送方长时间未收到M3的确认报文，会对M3进行重传。除了这样，接收方也可以重复发送M2的确认报文，这样发送端长时间未收到M3的确认报文也会继续发送M3报文。</p>
-<p><strong>但是根据快重传算法，要求在这种情况下，需要快速向发送端发送M2的确认报文，在发送方收到三个M2的确认报文后，无需等待重传计时器所设置的时间，可直接进行M3的重传，这就是快重传。</strong>(面试时说这一句就够了，前面是帮助理解)</p>
-</li>
-<li><p>快恢复：从上上图圈4可以看到，当发送收到三个重复的ACK，会进行快重传和快恢复。快恢复是指将ssthresh设置为发生快重传时的cwnd数量的一半，而cwnd不是设置为1而是设置为为门限值ssthresh，并开始拥塞避免阶段。</p>
-</li>
-</ol>
-<p><strong>拥塞窗口和滑动窗口</strong></p>
-<p>滑动窗口：接受数据端使用的窗口大小，用来<strong>告知发送端接收端的缓存大小</strong>，以此可以控制发送端发送数据的大小，从而达到流量控制的目的。 </p>
-<p>对于数据的发送端就是拥塞窗口了，拥塞窗口不代表缓存，<strong>拥塞窗口指某一源端数据流在一个RTT内可以最多发送的数据包数</strong> 。</p>
-<p>RTT=发送到接收到ACK的时间</p>
-</li>
-</ul>
-<h2 id="TCP沾包"><a href="#TCP沾包" class="headerlink" title="TCP沾包"></a>TCP沾包</h2><ul>
-<li>TCP传输数据基于字节流，  从应用层到 TCP 传输层的多个数据包是一连串的字节流是没有边界的，而且 TCP 首部并没有记录数据包的长度，所以 TCP 传输数据的时候可能会发送粘包和拆包的问题；</li>
-<li>而 UDP 是基于数据报传输数据的，UDP 首部也记录了数据报的长度，可以轻易的区分出不同的数据包的边界。</li>
-</ul>
-<p>沾包和拆包的原因：</p>
-<ul>
-<li>TCP 发送缓冲区剩余空间不足以发送一个完整的数据包，将发生拆包</li>
-<li>要发送的数据超过了最大报文长度的限制，TCP 传输数据时进行拆包  </li>
-<li>要发送的数据包小于 TCP 发送缓冲区剩余空间，TCP 将多个数据包写满发送缓冲区一次发送出去，将发生粘包</li>
-<li>接收端没有及时读取 TCP 发送缓冲区中的数据包，将会发生粘包  </li>
-</ul>
-<p>解决沾包：</p>
-<p>1、每次发送设置带消息头的协议，存储开始的标志以及消息长度</p>
-<p>2、每次发送定长的消息。</p>
-<p>3、设置消息边界，结束的时候给标志位。</p>
-<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p> <code>UDP</code>报头包括4个字段，每个字段占用2个字节（即16个二进制位） </p>
-<ul>
-<li>源端口、目的端口、长度、校验和</li>
-</ul>
-<p>特点：</p>
-<ul>
-<li>UDP 不提供复杂的控制机制，利用 IP 提供面向无连接的通信服务</li>
-<li>传输途中出现丢包，UDP 也不负责重发</li>
-<li>当包的到达顺序出现乱序时，UDP没有纠正的功能</li>
-<li>并且它是将应用程序发来的数据在收到的那一刻，立即按照原样发送到网络上的一种机制。即使是出现网络拥堵的情况，UDP 也无法进行流量控制等避免网络拥塞行为</li>
-</ul>
-<h2 id="如何让UDP实现高可靠"><a href="#如何让UDP实现高可靠" class="headerlink" title="如何让UDP实现高可靠"></a>如何让UDP实现高可靠</h2><p>传输层无法保证数据的可靠传输，只能通过应用层来实现了。实现的方式可以参照tcp可靠性传输的方式，只是实现不在传输层，实现转移到了应用层。 </p>
-<p>实现确认机制、重传机制、窗口确认机制。 </p>
-<p>发送： 包的分片、包确认、包的重发 </p>
-<p>接收： 包的调序、包的序号确认 </p>
-<h2 id="UDP快在哪里"><a href="#UDP快在哪里" class="headerlink" title="UDP快在哪里"></a>UDP快在哪里</h2><p>1、校验和： 对于 TCP 和 UDP，都实现了校验和算法，但二者的区别是，TCP 如果发现校验核对不上，也就是数据损坏，会主动丢失这个封包并且重发。而 UDP 什么都不会处理，UDP 把处理的权利交给使用它的程序员。</p>
-<p>2、TCP三次握手建立连接，UDP不用建立连接。</p>
-<p>3、超时重传、丢失重传等一系列重传机制，导致速度变慢。</p>
-<h2 id="IP生存周期"><a href="#IP生存周期" class="headerlink" title="IP生存周期"></a>IP生存周期</h2><p>生存周期表示一个Internet报文生存期的上限，由报文的发送者来设置。可以把生存周 期看作是数据库包的寿命计数器。为了防止数据包在网络中无休止地被传递下去，或者由于 传输路径造成死循环，每个 IP 数据包中都包含一个寿命计数器。数据包在网络传输的过程 中，每经过一个路由器的处理，其中的寿命计数器就会递减1。如果寿命计数器的值等于0， 并且报文还没有到达目的地，则该报文将会被丢失。</p>
-<p>寿命计数器TTL，默认为255。</p>
-<h2 id="路由器和交换机"><a href="#路由器和交换机" class="headerlink" title="路由器和交换机"></a>路由器和交换机</h2><p>工作层次不同：</p>
-<ul>
-<li><p>路由器工作在网络层，根据IP地址转发数据，可以处理TCP/IP数据， 具有路由功能，用于连接内网和外网； </p>
-</li>
-<li><p>交换机工作在数据链路层，根据MAC地址转发数据帧，所连接的终端属于同一个网段，不用经过路由器就可以进行数据的转发。 </p>
-</li>
-</ul>
-<p>用途不同：</p>
-<ul>
-<li>路由器用于连接内网和外网，将内网的数据包通过路由功能转发到外网，实现内网和外网的互通 </li>
-<li>交换机用于连接内网的终端，使用了同一个网段，比如192.168.1.0，不同主机之间交换数据通过MAC地址识别。两个主机通信，首先发送ARP数据包，就IP地址转换为MAC地址才能进行相互通信。 </li>
-</ul>
-<p>组网位置不同</p>
-<ul>
-<li>路由器部署在网络出口的位置，一般只有一个后者两个互为备份，用于连接内网和外网 </li>
-<li>交换机的数量就不确定了，根据用户的多少，可能由几百台交换机，完成用户终端的接入，是局域网组网的核心设备</li>
-</ul>
-<h2 id="Cookie和Session"><a href="#Cookie和Session" class="headerlink" title="Cookie和Session"></a>Cookie和Session</h2><p>Cookie 一般用来保存用户信息,存在浏览器中。再次访问自动登录</p>
-<p>Session 的主要作用就是通过服务端记录用户的状态。购物车。</p>
-<p>问：如果浏览器的cookie禁用，session还能使用吗？</p>
-<p>答：不能使用. 因为session是基于cookie的. cookie存储着sessionid </p>
-<h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><ul>
-<li>物理层：通信信道上的原始比特流传输。</li>
-<li>数据链路层：物理寻址，将原始比特流转变为逻辑传输线路。</li>
-<li>网络层：控制子网的运行，如逻辑编址、分组传输、路由选择</li>
-<li>传输层：接收上一层的数据，在必要的时候把数据进行分割，并将这些数据交给网络层，并保证这些数据段有效到达对端。</li>
-<li>会话层：不同机器上的用户之间建立及管理会话。</li>
-<li>表示层：信息的语法语义及其关联，如加密解密、转换翻译、压缩解压缩。</li>
-<li>应用层：HTTP、FTP、POP3</li>
-</ul>
-<h2 id="HTTP请求的过程"><a href="#HTTP请求的过程" class="headerlink" title="HTTP请求的过程"></a>HTTP请求的过程</h2><p>1、域名解析</p>
-<ul>
-<li>查询浏览器缓存（缓存只有一分钟）</li>
-<li>查询路由器缓存</li>
-<li>查询DNS缓存</li>
-</ul>
-<p>2、向Web服务器发送一个HTTP请求</p>
-<ul>
-<li>建立TCP，建立TCP时，需要发送数据，发送数据在网络层使用IP协议</li>
-<li>OSPF：IP数据包在路由器之间，路由选择使用OSPF （Open Shortest Path First，ospf）开放最短路径优先协议</li>
-<li>ARP：路由器在与服务器通信时，需要将ip地址转换为mac地址，用到了ARP协议。</li>
-<li>TCP建立完成之后，使用HTTP协议访问页面</li>
-</ul>
-<p>3、服务器处理请求，返回一个HTML响应</p>
-<p>4、浏览器解析HTML，渲染页面</p>
-<ul>
-<li>解析HTML文件，创建DOM数</li>
-<li>解析CSS，形成CSS对象模型</li>
-<li>将CSS和DOM合并，构建渲染树</li>
-<li>页面的布局和绘制</li>
-</ul>
-<p><strong>HTTP</strong></p>
-<p>HTTP是超文本传输协议， 是一种用于在Internet上传输超文本的传输协议。</p>
-<p><strong>请求报文的结构</strong></p>
-<ul>
-<li>第一行是包含了请求方法、URL、协议版本；</li>
-<li>接下来的多行都是请求首部 Header，每个首部都有一个首部名称，以及对应的值。</li>
-<li>一个空行用来分隔首部和内容主体 Body</li>
-<li>最后是请求的内容主体</li>
-</ul>
-<p><strong>请求的头部信息</strong></p>
-<p>Accept：浏览器能够处理的内容类型<br>Accept-Charset：浏览器能够显示的字符集<br>Accept-Encoding：浏览器能够处理的压缩编码<br>Accept-Language：浏览器当前设置的语言<br>Connection：浏览器与服务器之间连接的类型<br>Cookie：当前页面设置的任何Cookie<br>Host：发出请求的页面所在的域<br>Referer：发出请求的页面的URL<br>User-Agent：浏览器的用户代理字符串</p>
-<p>空行</p>
-<p><strong>请求体</strong></p>
-<p>请求数据</p>
-<p><strong>响应报文</strong></p>
-<ul>
-<li>第一行包含协议版本、状态码以及描述，最常见的是 200 OK 表示请求成功了</li>
-<li>接下来多行也是首部内容</li>
-<li>一个空行分隔首部和内容主体</li>
-<li>最后是响应的内容主体</li>
-</ul>
-<p><strong>响应的头部信息</strong></p>
-<p>Age：推算资源创建经过时间<br>Cache-Control：控制HTTP缓存<br>Connection：浏览器与服务器之间连接的类型<br>Content-Encoding：适用的编码方式<br>Content-Type：表示后面的文档属于什么MIME类型<br>Date：表示消息发送的时间，时间的描述格式由rfc822定义<br>ETag：资源的匹配信息<br>Expires：提供一个日期和时间，响应在该日期和时间后被认为失效<br>Last-Modified：资源的最后修改日期时间<br>server：服务器名字</p>
-<p>HTTP协议是基于TCP协议来实现的,简单来说http需要可靠的传输,而TCP是一个面向连接的、可靠的传输层协议,一般http默认使用的是TCP的80端口。 </p>
-<h2 id="HTTP各个版本的区别"><a href="#HTTP各个版本的区别" class="headerlink" title="HTTP各个版本的区别"></a>HTTP各个版本的区别</h2><p><strong>HTTP1.0和1.1的区别</strong></p>
-<p>1、HTTP1.1默认使用长连接，HTTP1.1的持续连接有流水线方式和非流水线方式。流水线方式是客户端收到HTTP的响应报文之前就能接着发送新的请求报文。 与之相对应的非流水线方式是客户在收到前一个响应后才能发送下一个请求。</p>
-<p>2、错误状态响应码： 在 HTTP1.1 中新增了 24 个错误状态响应码，如 409（Conflict）表示请求的资源与资源的当前状态发生冲突；410（Gone）表示服务器上的某个资源被永久性的删除。</p>
-<p>3、缓存处理： 在 HTTP1.0 中主要使用 header 里的 If-Modified-Since,Expires 来做为缓存判断的标准，HTTP1.1 则引入了更多的缓存控制策略例如 Entity tag，If-Unmodified-Since, If-Match, If-None-Match 等更多可供选择的缓存头来控制缓存策略。 </p>
-<p>4、 <strong>带宽优化及网络连接的使用</strong> :HTTP1.0 中，存在一些浪费带宽的现象，例如客户端只是需要某个对象的一部分，而服务器却将整个对象送过来了，并且不支持断点续传功能，HTTP1.1 则在请求头引入了 range 头域，它允许只请求资源的某个部分，即返回码是 206（Partial Content），这样就方便了开发者自由的选择以便于充分利用带宽和连接。</p>
-<p><strong>HTTP和HTTPS的区别</strong></p>
-<p>1、端口：HTTP 的 URL 由“http://”起始且默认使用端口80，而HTTPS的URL由“https://”起始且默认使用端口443。</p>
-<p>2、安全性和资源消耗：  HTTP 协议运行在 TCP 之上，所有传输的内容都是明文，客户端和服务器端都无法验证对方的身份。HTTPS 是运行在 SSL/TLS 之上的 HTTP 协议，SSL/TLS 运行在 TCP 之上。所有传输的内容都经过加密，加密采用对称加密，但对称加密的密钥用服务器方的证书进行了非对称加密。所以说，HTTP 安全性没有 HTTPS 高，但是 HTTPS 比 HTTP 耗费更多服务器资源。 </p>
-<h2 id="HTTPS请求的过程"><a href="#HTTPS请求的过程" class="headerlink" title="HTTPS请求的过程"></a>HTTPS请求的过程</h2><p>1、客户端向服务器发起HTTPS请求，连接到服务器的443端口</p>
-<p>2、服务器将非对称加密的公钥传递给客户端，以证书的形式传到客户端 </p>
-<p>3、客户端接受到该公钥进行验证，就是验证证书，如果有问题，则HTTPS请求无法继续；如果没有问题，则上述公钥是合格的。（第一次HTTP请求）客户端这个时候随机生成一个私钥，成为client key,客户端私钥，用于对称加密数据的。使用前面的公钥对client key进行非对称加密</p>
-<p>4、进行第二次HTTP请求，将加密之后的client key传递给服务器</p>
-<p>5、服务器使用私钥进行解密，得到client key,使用client key对数据进行对称加密</p>
-<p>6、将对称加密的数据传递给客户端，客户端使用非对称解密，得到服务器发送的数据，完成第二次HTTP请求 </p>
-<h2 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h2><p>ARP（Address Resolution Protocol，地址解析协议） </p>
-<p>每台主机都会在自己的ARP缓冲区中建立一个 ARP列表，以表示IP地址和MAC地址的对应关系。当源主机需要将一个数据包要发送到目的主机时，会首先检查自己 ARP列表中是否存在该 IP地址对应的MAC地址，如果有，就直接将数据包发送到这个MAC地址；如果没有，就向本地网段发起一个ARP请求的广播包，查询此目的主机对应的MAC地址。</p>
-<p>此ARP请求数据包里包括源主机的IP地址、硬件地址、以及目的主机的IP地址。网络中所有的主机收到这个ARP请求后，会检查数据包中的目的IP是否和自己的IP地址一致。如果不相同就忽略此数据包；如果相同，该主机首先将发送端的MAC地址和IP地址添加到自己的ARP列表中，如果ARP表中已经存在该IP的信息，则将其覆盖，然后给源主机发送一个 ARP响应数据包，告诉对方自己是它需要查找的MAC地址；源主机收到这个ARP响应数据包后，将得到的目的主机的IP地址和MAC地址添加到自己的ARP列表中，并利用此信息开始数据的传输。 </p>
-<h1 id="设计模式六大原则"><a href="#设计模式六大原则" class="headerlink" title="设计模式六大原则"></a>设计模式六大原则</h1><p>1、接口隔离原则（一个类对另一个类的依赖应该建立在最小的接口上，客户端不应该被迫依赖于它不使用的方法）</p>
-<p>2、单一职责原则（一个类应该有且仅有一个引起它变化的原因）</p>
-<p>3、依赖倒置原则（要面向接口编程，不要面向实现编程）</p>
-<p>4、迪米特法则（只与直接朋友交谈，不与”陌生人”说话）</p>
-<p>5、里氏替换原则（子类可以扩展父类的功能，但不能改变父类原有的功能）</p>
-<p>6、开闭原则（对扩展开放，对修改关闭）</p>
-<h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><p>污染物管理APP</p>
-<p>污染物申请-&gt;后台审批-&gt;运输船去移交-&gt;运输船移交至岸基-&gt;岸基的运输车移交至处理终端-&gt;处理终端处理</p>
-<p>1、ViewPager取消预加载，实现懒加载</p>
-<p>ViewPager组件默认会预加载，会加载与其相邻的一个Fragment的数据。我们第一个Fragment是主页，第二个Fragment是信息展示，在没有数据的时候会提示信息，这样登录进入主页的时候可能会显示第二个Fragment无信息的提示。所以我们需要懒加载，即点击到那个Fragment再加载其数据。</p>
-<p>通过getUserVisibleHint判断是否处于这一Fragment，如果不是则不加载。此外实现了懒加载，如果一直频繁来回切换Fragment，可能会一直请求数据，数据量较大时可能会出现问题。所以进入这个Fragment的时候还判断了之前是否加载过，如果加载过则不加载。如果需要刷新的话，需要手动刷新。</p>
-<p>2、二维码</p>
-<p>使用开源包ZXING，根据github中的readme，创建扫码的Activity，扫码时会自动将二维码图片转换为String。同样的，ZXING也提供了将String转换为二维码的方法。</p>
-<p>3、使用百度地图API</p>
-<p>一、添加SDK，下载Android定位SDK，放到app路径下。</p>
-<p>二、配置build.gradle文件，加载下载的libs文件。</p>
-<p>三、申请API-KEY，配置到AndoirdManifest.xml文件。</p>
-<p>四、添加相关权限。</p>
-<p>五、 初始化LocationClient类，配置定位SDK参数，自定义一个监听器实现 BDAbstractLocationListener 接口，重写里面的onReceiveLocation方法获取经纬度。</p>
-<h2 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h2><p>JWT的三个部分：</p>
-<ul>
-<li><p>头部（header）</p>
-<p>一段Json，经过base64编码之后变成一段字符串，主要包含两个部分</p>
-<ul>
-<li>声明类型：JWT</li>
-<li>声明加密的算法，SHA256、HS256</li>
-</ul>
-</li>
-<li><p>有效负荷（payload）：不应在此部分放敏感信息！</p>
-<ul>
-<li>需要传输的信息，用户id，用户名等</li>
-<li>包含的元数据，过期时间、发布人、ID</li>
-</ul>
-</li>
-<li><p>签名（signature）</p>
-<ul>
-<li>用密钥secret对header和payload部分进行签名</li>
-<li>保证token再传输的过程中没有被篡改或损坏</li>
-</ul>
-</li>
-</ul>
-<p>工作原理：</p>
-<p>客户端通过请求将用户名和密码传给服务端，服务端将用户名和密码进行核对，核对成功后将用户id等其他信息作为jwt的有效载荷（payload）与头部进行base64编码形成jwt（字符串），后端将这段字符串作为登陆成功的返回结果返回给前端。前端将其保存在localstroage或sessionstroage里，退出登录时，删除JWT字符串就可以。 </p>
-<p>使用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 加密</span></span><br><span class="line">String jwtToken = jwtBuilder</span><br><span class="line">    <span class="comment">// header</span></span><br><span class="line">    .setHeaderParam(<span class="string">"typ"</span>,<span class="string">"JWT"</span>)</span><br><span class="line">    .setHeaderParam(<span class="string">"alg"</span>,<span class="string">"HS256"</span>)</span><br><span class="line">    <span class="comment">// payload</span></span><br><span class="line">    .claim(<span class="string">"username"</span>,<span class="string">"tom"</span>)</span><br><span class="line">    .claim(<span class="string">"role"</span>, <span class="string">"admin"</span>)</span><br><span class="line">    <span class="comment">//设置过期时间</span></span><br><span class="line">    .setExpiration(<span class="keyword">new</span> Date(System.currentTimeMills+time))</span><br><span class="line">    .setId(UUID)</span><br><span class="line">    <span class="comment">// signature</span></span><br><span class="line">    .signWith(SignatureAlgorithm.HS256, signature)</span><br><span class="line">    <span class="comment">//拼接</span></span><br><span class="line">    .compact();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密</span></span><br><span class="line">String token = <span class="string">"//token"</span>;</span><br><span class="line">JwtParser jwtParser = Jwts.parser();</span><br><span class="line">Jws&lt;Claims&gt; claimsJws = jwtParser.setSigningKey(signature)</span><br><span class="line">    .parseClaimsJws(token);</span><br><span class="line">Claims claims = claimsJws.getBody();</span><br><span class="line">claims.get(<span class="string">"username"</span>);</span><br><span class="line">claims.get(<span class="string">"role"</span>);</span><br><span class="line">claims.getExpiration();</span><br></pre></td></tr></table></figure>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>1、-copyToLocal：从HDFS拷贝到本地</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -copyToLocal /sanguo/shuguo.txt ./</span><br></pre></td></tr></table></figure>
+
+<p>2、-get：等同于copyToLocal，生产环境更习惯用get</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -get /sanguo/shuguo.txt ./shuguo2.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="HDFS直接操作"><a href="#HDFS直接操作" class="headerlink" title="HDFS直接操作"></a>HDFS直接操作</h3><p>1、-ls: 显示目录信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -get /sanguo/shuguo.txt ./shuguo2.txt</span><br></pre></td></tr></table></figure>
+
+<p>2、-cat：显示文件内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cat /sanguo/shuguo.txt</span><br></pre></td></tr></table></figure>
+
+<p>3、-chgrp、-chmod、-chown：Linux文件系统中的用法一样，修改文件所属权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs  -chmod 666  /sanguo/shuguo.txt</span><br><span class="line">hadoop fs  -chown  atguigu:atguigu   /sanguo/shuguo.txt</span><br></pre></td></tr></table></figure>
+
+<p>4、-mkdir：创建路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir /jinguo</span><br></pre></td></tr></table></figure>
+
+<p>5、-cp：从HDFS的一个路径拷贝到HDFS的另一个路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cp /sanguo/shuguo.txt /jinguo</span><br></pre></td></tr></table></figure>
+
+<p>6、-mv：在HDFS目录中移动文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mv /sanguo/wuguo.txt /jinguo</span><br><span class="line">hadoop fs -mv /sanguo/weiguo.txt /jinguo</span><br></pre></td></tr></table></figure>
+
+<p>7、-tail：显示一个文件的末尾1kb的数据</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -tail /jinguo/shuguo.txt</span><br></pre></td></tr></table></figure>
+
+<p>8、-rm：删除文件或文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -rm /sanguo/shuguo.txt</span><br></pre></td></tr></table></figure>
+
+<p>9、-rm -r：递归删除目录及目录里面内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -rm -r /sanguo</span><br></pre></td></tr></table></figure>
+
+<p>10、-du 统计文件夹的大小信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -du -s -h /jinguo</span><br><span class="line">hadoop fs -du  -h /jinguo</span><br></pre></td></tr></table></figure>
+
+<p>11、-setrep：设置HDFS中文件的副本数量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -setrep 10 /jinguo/shuguo.txt</span><br></pre></td></tr></table></figure>
+
+<p>这里设置的副本数只是记录在NameNode的元数据中，是否真的会有这么多副本，还得看DataNode的数量。因为目前只有3台设备，最多也就3个副本，只有节点数的增加到10台时，副本数才能达到10。</p>
+<h1 id="HDFS的API操作"><a href="#HDFS的API操作" class="headerlink" title="HDFS的API操作"></a>HDFS的API操作</h1><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>在IDEA中创建一个Maven工程HdfsClientDemo，并导入相应的依赖坐标+日志添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hadoop-client&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;3.1.3&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;4.12&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.7.30&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在项目的src/main/resources目录下，新建一个文件，命名为“log4j.properties”，在文件中填入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">log4j.rootLogger=INFO, stdout  </span><br><span class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender  </span><br><span class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout  </span><br><span class="line">log4j.appender.stdout.layout.ConversionPattern=%d %p [%c] - %m%n  </span><br><span class="line">log4j.appender.logfile=org.apache.log4j.FileAppender  </span><br><span class="line">log4j.appender.logfile.File=target/spring.log  </span><br><span class="line">log4j.appender.logfile.layout=org.apache.log4j.PatternLayout  </span><br><span class="line">log4j.appender.logfile.layout.ConversionPattern=%d %p [%c] - %m%n</span><br></pre></td></tr></table></figure>
+
+<p>创建HdfsClient类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HdfsClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMkdirs</span><span class="params">()</span> <span class="keyword">throws</span> IOException, URISyntaxException, InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1 获取文件系统</span></span><br><span class="line">        Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">        <span class="comment">// FileSystem fs = FileSystem.get(new URI("hdfs://hadoop102:8020"), configuration);</span></span><br><span class="line">        FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:8020"</span>), configuration,<span class="string">"atguigu"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2 创建目录</span></span><br><span class="line">        fs.mkdirs(<span class="keyword">new</span> Path(<span class="string">"/xiyou/huaguoshan/"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3 关闭资源</span></span><br><span class="line">        fs.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行程序</p>
+<p>客户端去操作HDFS时，是有一个用户身份的。默认情况下，HDFS客户端API会从采用Windows默认用户访问HDFS，会报权限异常错误。所以在访问HDFS时，一定要配置用户。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.apache.hadoop.security.AccessControlException: Permission denied: user=<span class="number">56576</span>, access=WRITE, inode=<span class="string">"/xiyou/huaguoshan"</span>:atguigu:supergroup:drwxr-xr-x</span><br></pre></td></tr></table></figure>
+
+<h2 id="HDFS的API操作案例"><a href="#HDFS的API操作案例" class="headerlink" title="HDFS的API操作案例"></a>HDFS的API操作案例</h2><h3 id="HDFS文件上传"><a href="#HDFS文件上传" class="headerlink" title="HDFS文件上传"></a>HDFS文件上传</h3><p>1、编写源代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCopyFromLocalFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1 获取文件系统</span></span><br><span class="line">    Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">    configuration.set(<span class="string">"dfs.replication"</span>, <span class="string">"2"</span>);</span><br><span class="line">    FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:8020"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2 上传文件</span></span><br><span class="line">    fs.copyFromLocalFile(<span class="keyword">new</span> Path(<span class="string">"d:/sunwukong.txt"</span>), <span class="keyword">new</span> Path(<span class="string">"/xiyou/huaguoshan"</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3 关闭资源</span></span><br><span class="line">    fs.close();</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+<p>2、将hdfs-site.xml拷贝到项目的resources资源目录下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;?xml-stylesheet type=<span class="string">"text/xsl"</span> href=<span class="string">"configuration.xsl"</span>?&gt;</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">	&lt;property&gt;</span><br><span class="line">		&lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">         &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3、参数优先级</p>
+<p>参数优先级排序：（1）客户端代码中设置的值 &gt;（2）ClassPath下的用户自定义配置文件 &gt;（3）然后是服务器的自定义配置（xxx-site.xml） &gt;（4）服务器的默认配置（xxx-default.xml）</p>
+<h3 id="HDFS文件下载"><a href="#HDFS文件下载" class="headerlink" title="HDFS文件下载"></a>HDFS文件下载</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCopyToLocalFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1 获取文件系统</span></span><br><span class="line">    Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">    FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:8020"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 2 执行下载操作</span></span><br><span class="line">    <span class="comment">// boolean delSrc 指是否将原文件删除</span></span><br><span class="line">    <span class="comment">// Path src 指要下载的文件路径</span></span><br><span class="line">    <span class="comment">// Path dst 指将文件下载到的路径</span></span><br><span class="line">    <span class="comment">// boolean useRawLocalFileSystem 是否开启文件校验</span></span><br><span class="line">    fs.copyToLocalFile(<span class="keyword">false</span>, <span class="keyword">new</span> Path(<span class="string">"/xiyou/huaguoshan/sunwukong.txt"</span>), <span class="keyword">new</span> Path(<span class="string">"d:/sunwukong2.txt"</span>), <span class="keyword">true</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 3 关闭资源</span></span><br><span class="line">    fs.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：如果执行上面代码，下载不了文件，有可能是你电脑的微软支持的运行库少，需要安装一下微软运行库。</p>
+<h3 id="HDFS文件更名和移动"><a href="#HDFS文件更名和移动" class="headerlink" title="HDFS文件更名和移动"></a>HDFS文件更名和移动</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testRename</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1 获取文件系统</span></span><br><span class="line">	Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">	FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:8020"</span>), configuration, <span class="string">"atguigu"</span>); </span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 2 修改文件名称</span></span><br><span class="line">	fs.rename(<span class="keyword">new</span> Path(<span class="string">"/xiyou/huaguoshan/sunwukong.txt"</span>), <span class="keyword">new</span> Path(<span class="string">"/xiyou/huaguoshan/meihouwang.txt"</span>));</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 3 关闭资源</span></span><br><span class="line">	fs.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="HDFS删除文件和目录"><a href="#HDFS删除文件和目录" class="headerlink" title="HDFS删除文件和目录"></a>HDFS删除文件和目录</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelete</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1 获取文件系统</span></span><br><span class="line">	Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">	FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:8020"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 2 执行删除</span></span><br><span class="line">	fs.delete(<span class="keyword">new</span> Path(<span class="string">"/xiyou"</span>), <span class="keyword">true</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 3 关闭资源</span></span><br><span class="line">	fs.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="HDFS文件详情查看"><a href="#HDFS文件详情查看" class="headerlink" title="HDFS文件详情查看"></a>HDFS文件详情查看</h3><p>查看文件名称、权限、长度、块信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testListFiles</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line">    <span class="comment">// 1获取文件系统</span></span><br><span class="line">    Configuration configuration=<span class="keyword">new</span> Configuration();</span><br><span class="line">    FileSystem fs=FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:8020"</span>),configuration,<span class="string">"atguigu"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 2 获取文件详情</span></span><br><span class="line">    RemoteIterator&lt;LocatedFileStatus&gt; listFiles=fs.listFiles(<span class="keyword">new</span> Path(<span class="string">"/"</span>),<span class="keyword">true</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(listFiles.hasNext())&#123;</span><br><span class="line">        LocatedFileStatus fileStatus=listFiles.next();</span><br><span class="line">    </span><br><span class="line">        System.out.println(<span class="string">"========"</span>+fileStatus.getPath()+<span class="string">"========="</span>);</span><br><span class="line">        System.out.println(fileStatus.getPermission());</span><br><span class="line">        System.out.println(fileStatus.getOwner());</span><br><span class="line">        System.out.println(fileStatus.getGroup());</span><br><span class="line">        System.out.println(fileStatus.getLen());</span><br><span class="line">        System.out.println(fileStatus.getModificationTime());</span><br><span class="line">        System.out.println(fileStatus.getReplication());</span><br><span class="line">        System.out.println(fileStatus.getBlockSize());</span><br><span class="line">        System.out.println(fileStatus.getPath().getName());</span><br><span class="line">    </span><br><span class="line">        <span class="comment">// 获取块信息</span></span><br><span class="line">        BlockLocation[]blockLocations=fileStatus.getBlockLocations();</span><br><span class="line">        System.out.println(Arrays.toString(blockLocations));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 3 关闭资源</span></span><br><span class="line">    fs.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="HDFS文件和文件夹判断"><a href="#HDFS文件和文件夹判断" class="headerlink" title="HDFS文件和文件夹判断"></a>HDFS文件和文件夹判断</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testListStatus</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1 获取文件配置信息</span></span><br><span class="line">    Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">    FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:8020"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 2 判断是文件还是文件夹</span></span><br><span class="line">    FileStatus[] listStatus = fs.listStatus(<span class="keyword">new</span> Path(<span class="string">"/"</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (FileStatus fileStatus : listStatus) &#123;</span><br><span class="line">        <span class="comment">// 如果是文件</span></span><br><span class="line">        <span class="keyword">if</span> (fileStatus.isFile()) &#123;</span><br><span class="line">            System.out.println(<span class="string">"f:"</span>+fileStatus.getPath().getName());</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"d:"</span>+fileStatus.getPath().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 3 关闭资源</span></span><br><span class="line">    fs.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="HDFS的读写流程"><a href="#HDFS的读写流程" class="headerlink" title="HDFS的读写流程"></a>HDFS的读写流程</h1><h2 id="HDFS写数据流程"><a href="#HDFS写数据流程" class="headerlink" title="HDFS写数据流程"></a>HDFS写数据流程</h2><h3 id="剖析文件写入"><a href="#剖析文件写入" class="headerlink" title="剖析文件写入"></a>剖析文件写入</h3><p><strong>HDFS的写数据流程</strong></p>
+<p><img src="/2022/09/11/HDFS/xsjlc411.jpg" alt></p>
+<p>1、客户端通过Distributed FileSystem模块向NameNode请求上传文件，NameNode检查目标文件是否已存在，父目录是否存在。</p>
+<p>2、NameNode返回是否可以上传。</p>
+<p>3、客户端请求第一个 Block上传到哪几个DataNode服务器上。</p>
+<p>4、NameNode返回3个DataNode节点，分别为dn1、dn2、dn3。</p>
+<p>5、客户端通过FSDataOutputStream模块请求dn1上传数据，dn1收到请求会继续调用dn2，然后dn2调用dn3，将这个通信管道建立完成。</p>
+<p>6、dn1、dn2、dn3逐级应答客户端。</p>
+<p>7、客户端开始往dn1上传第一个Block（先从磁盘读取数据放到一个本地内存缓存），以Packet为单位，dn1收到一个Packet就会传给dn2，dn2传给dn3；dn1每传一个packet会放入一个应答队列等待应答。</p>
+<p>8、当一个Block传输完成之后，客户端再次请求NameNode上传第二个Block的服务器。（重复执行3-7步）。</p>
+<h3 id="网络拓扑-节点距离计算"><a href="#网络拓扑-节点距离计算" class="headerlink" title="网络拓扑-节点距离计算"></a>网络拓扑-节点距离计算</h3><p>在HDFS写数据的过程中，NameNode会选择距离待上传数据最近距离的DataNode接收数据。那么这个最近距离怎么计算呢？</p>
+<p>节点距离：两个节点到达最近的共同祖先的距离总和。</p>
+<p><img src="/2022/09/11/HDFS/wltpjljs.jpg" alt></p>
+<p>例如，假设有数据中心d1机架r1中的节点n1。该节点可以表示为/d1/r1/n1。利用这种标记，这里给出四种距离描述。</p>
+<h3 id="机架感知（副本存储节点选择）"><a href="#机架感知（副本存储节点选择）" class="headerlink" title="机架感知（副本存储节点选择）"></a>机架感知（副本存储节点选择）</h3><p>1、机架感知说明</p>
+<p><a href="#Data_Replication">http://hadoop.apache.org/docs/r3.1.3/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Data_Replication</a></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">For the common case, when the replication factor is three, HDFS’s placement policy is to put one replica on the local machine if the writer is on a datanode, otherwise on a random datanode, another replica on a node in a different (remote) rack, and the last on a different node in the same remote rack. This policy cuts the inter-rack write traffic which generally improves write performance. The chance of rack failure is far less than that of node failure; this policy does not impact data reliability and availability guarantees. However, it does reduce the aggregate network bandwidth used when reading data since a block is placed in only two unique racks rather than three. With this policy, the replicas of a file do not evenly distribute across the racks. One third of replicas are on one node, two thirds of replicas are on one rack, and the other third are evenly distributed across the remaining racks. This policy improves write performance without compromising data reliability or read performance.</span><br></pre></td></tr></table></figure>
+
+<p>Crtl + n 查找BlockPlacementPolicyDefault，在该类中查找chooseTargetInOrder方法。</p>
+<p>2、Hadoop3.1.3副本节点选择</p>
+<p><img src="/2022/09/11/HDFS/fbjdxz.jpg" alt></p>
+<h2 id="HDFS的读数据流程"><a href="#HDFS的读数据流程" class="headerlink" title="HDFS的读数据流程"></a>HDFS的读数据流程</h2><p><img src="/2022/09/11/HDFS/dsjlc.jpg" alt></p>
+<p>1、客户端通过DistributedFileSystem向NameNode请求下载文件，NameNode通过查询元数据，找到文件块所在的DataNode地址。</p>
+<p>2、挑选一台DataNode（就近原则，然后随机）服务器，请求读取数据。</p>
+<p>3、DataNode开始传输数据给客户端（从磁盘里面读取数据输入流，以Packet为单位来做校验）。</p>
+<p>4、客户端以Packet为单位接收，先在本地缓存，然后写入目标文件。</p>
+<h1 id="NameNode和SecondaryNameNode"><a href="#NameNode和SecondaryNameNode" class="headerlink" title="NameNode和SecondaryNameNode"></a>NameNode和SecondaryNameNode</h1><h2 id="NN和2NN工作机制"><a href="#NN和2NN工作机制" class="headerlink" title="NN和2NN工作机制"></a>NN和2NN工作机制</h2><p>思考：NameNode中的元数据是存储在哪里的？</p>
+<p>首先，我们做个假设，如果存储在NameNode节点的磁盘中，因为经常需要进行随机访问，还有响应客户请求，必然是效率过低。因此，元数据需要存放在内存中。但如果只存在内存中，一旦断电，元数据丢失，整个集群就无法工作了。因此产生在磁盘中备份元数据的FsImage。</p>
+<p>这样又会带来新的问题，当在内存中的元数据更新时，如果同时更新FsImage，就会导致效率过低，但如果不更新，就会发生一致性问题，一旦NameNode节点断电，就会产生数据丢失。因此，引入Edits文件（只进行追加操作，效率很高）。每当元数据有更新或者添加元数据时，修改内存中的元数据并追加到Edits中。这样，一旦NameNode节点断电，可以通过FsImage和Edits的合并，合成元数据。</p>
+<p>但是，如果长时间添加数据到Edits中，会导致该文件数据过大，效率降低，而且一旦断电，恢复元数据需要的时间过长。因此，需要定期进行FsImage和Edits的合并，如果这个操作由NameNode节点完成，又会效率过低。因此，引入一个新的节点SecondaryNamenode，专门用于FsImage和Edits的合并。</p>
+<h3 id="NameNode工作机制"><a href="#NameNode工作机制" class="headerlink" title="NameNode工作机制"></a>NameNode工作机制</h3><p><img src="/2022/09/11/HDFS/nngzjz.jpg" alt></p>
+<p><strong>第一阶段：NameNode启动</strong></p>
+<p>1、第一次启动NameNode格式化后，创建Fsimage和Edits文件。如果不是第一次启动，直接加载编辑日志和镜像文件到内存。</p>
+<p>2、客户端对元数据进行增删改的请求。</p>
+<p>3、NameNode记录操作日志，更新滚动日志。</p>
+<p>4、NameNode在内存中对元数据进行增删改。</p>
+<p><strong>第二阶段：Secondary NameNode工作</strong></p>
+<p>1、Secondary NameNode询问NameNode是否需要CheckPoint。直接带回NameNode是否检查结果。</p>
+<p>2、Secondary NameNode请求执行CheckPoint。</p>
+<p>3、NameNode滚动正在写的Edits日志。</p>
+<p>4、将滚动前的编辑日志和镜像文件拷贝到Secondary NameNode。</p>
+<p>5、Secondary NameNode加载编辑日志和镜像文件到内存，并合并。</p>
+<p>6、生成新的镜像文件fsimage.chkpoint。</p>
+<p>7、拷贝fsimage.chkpoint到NameNode。</p>
+<p>8、NameNode将fsimage.chkpoint重新命名成fsimage。</p>
+<h2 id="Fsiamge和Edits解析"><a href="#Fsiamge和Edits解析" class="headerlink" title="Fsiamge和Edits解析"></a>Fsiamge和Edits解析</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>NameNode被格式化之后，将在/opt/module/hadoop-3.1.3/data/tmp/dfs/name/current目录中产生以下文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fsimage_0000000000000000</span><br><span class="line">fsimage_0000000000000000.md5</span><br><span class="line">seen_txid</span><br><span class="line">VERSION</span><br></pre></td></tr></table></figure>
+
+<p>1、Fsimage文件：HDFS文件系统元数据的一个永久性的检查点，其中包含HDFS文件系统的所有目录和文件inode的序列化信息</p>
+<p>2、Edits文件：存放HDFS文件系统的所有更新操作的路径，文件系统客户端执行的所有写操作首先会被记录到Edits文件中。</p>
+<p>3、seen_txid文件保存的是一个数字，就是最后一个edits_的数字</p>
+<p>4、每次NameNode启动的时候都会将Fsiamge文件读入内存，加载Edits里面的更新操作，保存内存中的元数据信息是最新的、同步的，可以看成NameNode启动的时候就将Fsimage和Edits文件进行了合并。</p>
+<h3 id="oiv查看Fsimage文件"><a href="#oiv查看Fsimage文件" class="headerlink" title="oiv查看Fsimage文件"></a><strong>oiv查看Fsimage文件</strong></h3><p>1、基本语法</p>
+<p>hdfs oiv -p 文件类型 -i镜像文件 -o 转换后文件输出路径</p>
+<p>2、实操</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hdfs oiv -p XML -i fsimage_0000000000000000025 -o /opt/module/hadoop-3.1.3/fsimage.xml</span><br><span class="line"></span><br><span class="line">cat /opt/module/hadoop-3.1.3/fsimage.xml</span><br></pre></td></tr></table></figure>
+
+<p>将显示的xml文件内容拷贝到Idea中创建的xml文件中，并格式化。部分显示结果如下。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">inode</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span>&gt;</span>16386<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">type</span>&gt;</span>DIRECTORY<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>user<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mtime</span>&gt;</span>1512722284477<span class="tag">&lt;/<span class="name">mtime</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">permission</span>&gt;</span>atguigu:supergroup:rwxr-xr-x<span class="tag">&lt;/<span class="name">permission</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">nsquota</span>&gt;</span>-1<span class="tag">&lt;/<span class="name">nsquota</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dsquota</span>&gt;</span>-1<span class="tag">&lt;/<span class="name">dsquota</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">inode</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">inode</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span>&gt;</span>16387<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">type</span>&gt;</span>DIRECTORY<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>atguigu<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mtime</span>&gt;</span>1512790549080<span class="tag">&lt;/<span class="name">mtime</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">permission</span>&gt;</span>atguigu:supergroup:rwxr-xr-x<span class="tag">&lt;/<span class="name">permission</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">nsquota</span>&gt;</span>-1<span class="tag">&lt;/<span class="name">nsquota</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dsquota</span>&gt;</span>-1<span class="tag">&lt;/<span class="name">dsquota</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">inode</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">inode</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span>&gt;</span>16389<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">type</span>&gt;</span>FILE<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>wc.input<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">replication</span>&gt;</span>3<span class="tag">&lt;/<span class="name">replication</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mtime</span>&gt;</span>1512722322219<span class="tag">&lt;/<span class="name">mtime</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">atime</span>&gt;</span>1512722321610<span class="tag">&lt;/<span class="name">atime</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">perferredBlockSize</span>&gt;</span>134217728<span class="tag">&lt;/<span class="name">perferredBlockSize</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">permission</span>&gt;</span>atguigu:supergroup:rw-r--r--<span class="tag">&lt;/<span class="name">permission</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">blocks</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">block</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">id</span>&gt;</span>1073741825<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">genstamp</span>&gt;</span>1001<span class="tag">&lt;/<span class="name">genstamp</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">numBytes</span>&gt;</span>59<span class="tag">&lt;/<span class="name">numBytes</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">blocks</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">inode</span> &gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>思考：可以看出，Fsimage中没有记录块所对应DataNode，为什么？</p>
+<p>在集群启动后，要求DataNode上报数据块信息，并间隔一段时间后再次上报。</p>
+<h3 id="oev查看Edits文件"><a href="#oev查看Edits文件" class="headerlink" title="oev查看Edits文件"></a>oev查看Edits文件</h3><p>1、基本语法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs oev -p 文件类型 -i编辑日志 -o 转换后文件输出路径</span><br></pre></td></tr></table></figure>
+
+<p>2、实操</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hdfs oev -p XML -i edits_0000000000000000012-0000000000000000013 -o /opt/module/hadoop-3.1.3/edits.xml</span><br><span class="line"></span><br><span class="line">cat /opt/module/hadoop-3.1.3/edits.xml</span><br></pre></td></tr></table></figure>
+
+<p>将显示的xml文件内容拷贝到Idea中创建的xml文件中，并格式化。显示结果如下。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">EDITS</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">EDITS_VERSION</span>&gt;</span>-63<span class="tag">&lt;/<span class="name">EDITS_VERSION</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">RECORD</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">OPCODE</span>&gt;</span>OP_START_LOG_SEGMENT<span class="tag">&lt;/<span class="name">OPCODE</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">DATA</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">TXID</span>&gt;</span>129<span class="tag">&lt;/<span class="name">TXID</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">DATA</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">RECORD</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">RECORD</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">OPCODE</span>&gt;</span>OP_ADD<span class="tag">&lt;/<span class="name">OPCODE</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">DATA</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">TXID</span>&gt;</span>130<span class="tag">&lt;/<span class="name">TXID</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">LENGTH</span>&gt;</span>0<span class="tag">&lt;/<span class="name">LENGTH</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">INODEID</span>&gt;</span>16407<span class="tag">&lt;/<span class="name">INODEID</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">PATH</span>&gt;</span>/hello7.txt<span class="tag">&lt;/<span class="name">PATH</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">REPLICATION</span>&gt;</span>2<span class="tag">&lt;/<span class="name">REPLICATION</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">MTIME</span>&gt;</span>1512943607866<span class="tag">&lt;/<span class="name">MTIME</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">ATIME</span>&gt;</span>1512943607866<span class="tag">&lt;/<span class="name">ATIME</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">BLOCKSIZE</span>&gt;</span>134217728<span class="tag">&lt;/<span class="name">BLOCKSIZE</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">CLIENT_NAME</span>&gt;</span>DFSClient_NONMAPREDUCE_-1544295051_1<span class="tag">&lt;/<span class="name">CLIENT_NAME</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">CLIENT_MACHINE</span>&gt;</span>192.168.10.102<span class="tag">&lt;/<span class="name">CLIENT_MACHINE</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">OVERWRITE</span>&gt;</span>true<span class="tag">&lt;/<span class="name">OVERWRITE</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">PERMISSION_STATUS</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">USERNAME</span>&gt;</span>atguigu<span class="tag">&lt;/<span class="name">USERNAME</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">GROUPNAME</span>&gt;</span>supergroup<span class="tag">&lt;/<span class="name">GROUPNAME</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">MODE</span>&gt;</span>420<span class="tag">&lt;/<span class="name">MODE</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">PERMISSION_STATUS</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">RPC_CLIENTID</span>&gt;</span>908eafd4-9aec-4288-96f1-e8011d181561<span class="tag">&lt;/<span class="name">RPC_CLIENTID</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">RPC_CALLID</span>&gt;</span>0<span class="tag">&lt;/<span class="name">RPC_CALLID</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">DATA</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">RECORD</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">RECORD</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">OPCODE</span>&gt;</span>OP_ALLOCATE_BLOCK_ID<span class="tag">&lt;/<span class="name">OPCODE</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">DATA</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">TXID</span>&gt;</span>131<span class="tag">&lt;/<span class="name">TXID</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">BLOCK_ID</span>&gt;</span>1073741839<span class="tag">&lt;/<span class="name">BLOCK_ID</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">DATA</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">RECORD</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">RECORD</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">OPCODE</span>&gt;</span>OP_SET_GENSTAMP_V2<span class="tag">&lt;/<span class="name">OPCODE</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">DATA</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">TXID</span>&gt;</span>132<span class="tag">&lt;/<span class="name">TXID</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">GENSTAMPV2</span>&gt;</span>1016<span class="tag">&lt;/<span class="name">GENSTAMPV2</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">DATA</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">RECORD</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">RECORD</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">OPCODE</span>&gt;</span>OP_ADD_BLOCK<span class="tag">&lt;/<span class="name">OPCODE</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">DATA</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">TXID</span>&gt;</span>133<span class="tag">&lt;/<span class="name">TXID</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">PATH</span>&gt;</span>/hello7.txt<span class="tag">&lt;/<span class="name">PATH</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">BLOCK</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">BLOCK_ID</span>&gt;</span>1073741839<span class="tag">&lt;/<span class="name">BLOCK_ID</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">NUM_BYTES</span>&gt;</span>0<span class="tag">&lt;/<span class="name">NUM_BYTES</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">GENSTAMP</span>&gt;</span>1016<span class="tag">&lt;/<span class="name">GENSTAMP</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">BLOCK</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">RPC_CLIENTID</span>&gt;</span><span class="tag">&lt;/<span class="name">RPC_CLIENTID</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">RPC_CALLID</span>&gt;</span>-2<span class="tag">&lt;/<span class="name">RPC_CALLID</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">DATA</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">RECORD</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">RECORD</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">OPCODE</span>&gt;</span>OP_CLOSE<span class="tag">&lt;/<span class="name">OPCODE</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">DATA</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">TXID</span>&gt;</span>134<span class="tag">&lt;/<span class="name">TXID</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">LENGTH</span>&gt;</span>0<span class="tag">&lt;/<span class="name">LENGTH</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">INODEID</span>&gt;</span>0<span class="tag">&lt;/<span class="name">INODEID</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">PATH</span>&gt;</span>/hello7.txt<span class="tag">&lt;/<span class="name">PATH</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">REPLICATION</span>&gt;</span>2<span class="tag">&lt;/<span class="name">REPLICATION</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">MTIME</span>&gt;</span>1512943608761<span class="tag">&lt;/<span class="name">MTIME</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">ATIME</span>&gt;</span>1512943607866<span class="tag">&lt;/<span class="name">ATIME</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">BLOCKSIZE</span>&gt;</span>134217728<span class="tag">&lt;/<span class="name">BLOCKSIZE</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">CLIENT_NAME</span>&gt;</span><span class="tag">&lt;/<span class="name">CLIENT_NAME</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">CLIENT_MACHINE</span>&gt;</span><span class="tag">&lt;/<span class="name">CLIENT_MACHINE</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">OVERWRITE</span>&gt;</span>false<span class="tag">&lt;/<span class="name">OVERWRITE</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">BLOCK</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">BLOCK_ID</span>&gt;</span>1073741839<span class="tag">&lt;/<span class="name">BLOCK_ID</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">NUM_BYTES</span>&gt;</span>25<span class="tag">&lt;/<span class="name">NUM_BYTES</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">GENSTAMP</span>&gt;</span>1016<span class="tag">&lt;/<span class="name">GENSTAMP</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">BLOCK</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">PERMISSION_STATUS</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">USERNAME</span>&gt;</span>atguigu<span class="tag">&lt;/<span class="name">USERNAME</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">GROUPNAME</span>&gt;</span>supergroup<span class="tag">&lt;/<span class="name">GROUPNAME</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">MODE</span>&gt;</span>420<span class="tag">&lt;/<span class="name">MODE</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">PERMISSION_STATUS</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">DATA</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">RECORD</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">EDITS</span> &gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="CheckPoint时间设置"><a href="#CheckPoint时间设置" class="headerlink" title="CheckPoint时间设置"></a>CheckPoint时间设置</h2><p>1、通常情况下，SecondaryNameNode每隔一小时执行一次。</p>
+<p>hdfs-default.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.checkpoint.period<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>3600s<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2、一分钟检查一次操作次数，当操作次数达到1百万时，SecondaryNameNode执行一次。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.checkpoint.txns<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>1000000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>操作动作次数<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.checkpoint.check.period<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>60s<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span> 1分钟检查一次操作次数<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="DataNode"><a href="#DataNode" class="headerlink" title="DataNode"></a>DataNode</h1><h2 id="DataNode工作机制"><a href="#DataNode工作机制" class="headerlink" title="DataNode工作机制"></a>DataNode工作机制</h2><p><img src="/2022/09/11/HDFS/datanodegzjz.jpg" alt></p>
+<p>1、一个数据块在DataNode上以文件形式存储在磁盘上，包括两个文件，一个是数据本身，一个是元数据包括数据块的长度，块数据的校验和，以及时间戳。</p>
+<p>2、DataNode启动后向NameNode注册，通过后，周期性（6小时）的向NameNode上报所有的块信息。</p>
+<p>DN向NN汇报当前解读信息的时间间隔，默认6小时；</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.blockreport.intervalMsec<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>21600000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">description</span>&gt;</span>Determines block reporting interval in milliseconds.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>DN扫描自己节点块信息列表的时间，默认6小时</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.datanode.directoryscan.interval<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>21600s<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Interval in seconds for Datanode to scan data directories and reconcile the difference between blocks in memory and on the disk.Support multiple time unit suffix(case insensitive), as described in dfs.heartbeat.interval.</span><br><span class="line">	<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>3、心跳是每3秒一次，心跳返回结果带有NameNode给该DataNode的命令如复制块数据到另一台机器，或删除某个数据块。如果超过10分钟没有收到某个DataNode的心跳，则认为该节点不可用。</p>
+<p>4、集群运行中可以安全加入和退出一些机器。</p>
+<h2 id="数据完整性"><a href="#数据完整性" class="headerlink" title="数据完整性"></a>数据完整性</h2><p>思考：如果电脑磁盘里面存储的数据是控制高铁信号灯的红灯信号（1）和绿灯信号（0），但是存储该数据的磁盘坏了，一直显示是绿灯，是否很危险？同理DataNode节点上的数据损坏了，却没有发现，是否也很危险，那么如何解决呢？</p>
+<p>如下是DataNode节点保证数据完整性的方法。</p>
+<p>（1）当DataNode读取Block的时候，它会计算CheckSum。</p>
+<p>（2）如果计算后的CheckSum，与Block创建时值不一样，说明Block已经损坏。</p>
+<p>（3）Client读取其他DataNode上的Block。</p>
+<p>（4）常见的校验算法crc（32），md5（128），sha1（160）</p>
+<p>（5）DataNode在其文件创建后周期验证CheckSum。</p>
+<h2 id="掉线时限参数设置"><a href="#掉线时限参数设置" class="headerlink" title="掉线时限参数设置"></a>掉线时限参数设置</h2><p>DataNode掉线时限参数设置</p>
+<p><img src="/2022/09/11/HDFS/dxsxcssz.jpg" alt></p>
+<p>需要注意的是hdfs-site.xml 配置文件中的heartbeat.recheck.interval的单位为毫秒, dfs.heartbeat.interval的单位为秒。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.heartbeat.recheck-interval<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>300000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.heartbeat.interval<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>3<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
       
@@ -951,6 +501,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -1001,7 +562,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zhanzl711.github.io/2021/09/04/%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zhanzl711.github.io/2022/09/11/HDFS/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -1015,18 +576,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/10/19/Java%E5%85%AB%E8%82%A1%E6%96%87%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java八股文总结
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/08/28/%E7%AC%94%E8%AF%95%E8%AE%B0%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">笔试记录</div>
+    <a href="/2022/09/10/rabbitmq/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">rabbitmq</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -1053,7 +605,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#零碎知识点"><span class="toc-number">1.</span> <span class="toc-text">零碎知识点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java基础"><span class="toc-number">2.</span> <span class="toc-text">Java基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#注解"><span class="toc-number">2.1.</span> <span class="toc-text">注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反射"><span class="toc-number">2.2.</span> <span class="toc-text">反射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java如何实现多态"><span class="toc-number">2.3.</span> <span class="toc-text">Java如何实现多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类与接口"><span class="toc-number">2.4.</span> <span class="toc-text">抽象类与接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问修饰符"><span class="toc-number">2.5.</span> <span class="toc-text">访问修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#int-a-3在内存中是怎么存的"><span class="toc-number">2.6.</span> <span class="toc-text">int a &#x3D; 3在内存中是怎么存的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String为什么设置成不可变的"><span class="toc-number">2.7.</span> <span class="toc-text">String为什么设置成不可变的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap的长度为什么是2的幂次方"><span class="toc-number">2.8.</span> <span class="toc-text">HashMap的长度为什么是2的幂次方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ThreadLocal"><span class="toc-number">2.9.</span> <span class="toc-text">ThreadLocal</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类加载过程"><span class="toc-number">2.10.</span> <span class="toc-text">类加载过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象创建的过程"><span class="toc-number">2.11.</span> <span class="toc-text">对象创建的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象的访问定位"><span class="toc-number">2.12.</span> <span class="toc-text">对象的访问定位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#判断对象是否废弃"><span class="toc-number">2.13.</span> <span class="toc-text">判断对象是否废弃</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逃逸分析"><span class="toc-number">2.14.</span> <span class="toc-text">逃逸分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BIO、NIO"><span class="toc-number">2.15.</span> <span class="toc-text">BIO、NIO</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM"><span class="toc-number">3.</span> <span class="toc-text">JVM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CMS收集器"><span class="toc-number">3.1.</span> <span class="toc-text">CMS收集器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G1收集器"><span class="toc-number">3.2.</span> <span class="toc-text">G1收集器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mysql"><span class="toc-number">4.</span> <span class="toc-text">Mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库三大范式"><span class="toc-number">4.1.</span> <span class="toc-text">数据库三大范式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么MySQL选择B-数做索引"><span class="toc-number">4.2.</span> <span class="toc-text">为什么MySQL选择B+数做索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引的分类"><span class="toc-number">4.3.</span> <span class="toc-text">索引的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引什么时候会失效"><span class="toc-number">4.4.</span> <span class="toc-text">索引什么时候会失效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mysql中一条查询语句如何执行"><span class="toc-number">4.5.</span> <span class="toc-text">Mysql中一条查询语句如何执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mysql锁升级"><span class="toc-number">4.6.</span> <span class="toc-text">Mysql锁升级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隐式转换"><span class="toc-number">4.7.</span> <span class="toc-text">隐式转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL分类"><span class="toc-number">4.8.</span> <span class="toc-text">SQL分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#InnoDB是如何实现事务的"><span class="toc-number">4.9.</span> <span class="toc-text">InnoDB是如何实现事务的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引下推"><span class="toc-number">4.10.</span> <span class="toc-text">索引下推</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多线程"><span class="toc-number">5.</span> <span class="toc-text">多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#线程间是如何通信的"><span class="toc-number">5.1.</span> <span class="toc-text">线程间是如何通信的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现多线程的几种方法"><span class="toc-number">5.2.</span> <span class="toc-text">实现多线程的几种方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#synchronized和ReentrantLock"><span class="toc-number">5.3.</span> <span class="toc-text">synchronized和ReentrantLock</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConCurrentHashMap的扩容机制"><span class="toc-number">5.4.</span> <span class="toc-text">ConCurrentHashMap的扩容机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ConcurrentHashMap的size"><span class="toc-number">5.5.</span> <span class="toc-text">ConcurrentHashMap的size</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile关键字"><span class="toc-number">5.6.</span> <span class="toc-text">volatile关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对线程池的理解"><span class="toc-number">5.7.</span> <span class="toc-text">对线程池的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程复用的原理"><span class="toc-number">5.8.</span> <span class="toc-text">线程复用的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阻塞队列"><span class="toc-number">5.9.</span> <span class="toc-text">阻塞队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#父子进程"><span class="toc-number">5.10.</span> <span class="toc-text">父子进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CAS"><span class="toc-number">5.11.</span> <span class="toc-text">CAS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AQS"><span class="toc-number">5.12.</span> <span class="toc-text">AQS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#锁粗化和锁消除"><span class="toc-number">5.13.</span> <span class="toc-text">锁粗化和锁消除</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring"><span class="toc-number">6.</span> <span class="toc-text">Spring</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Autowired和Resource注解的区别"><span class="toc-number">6.1.</span> <span class="toc-text">Autowired和Resource注解的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖注入的方式"><span class="toc-number">6.2.</span> <span class="toc-text">依赖注入的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring循环依赖"><span class="toc-number">6.3.</span> <span class="toc-text">Spring循环依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring中的事务是如何实现的"><span class="toc-number">6.4.</span> <span class="toc-text">Spring中的事务是如何实现的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring容器启动流程"><span class="toc-number">6.5.</span> <span class="toc-text">Spring容器启动流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring处理全局异常的方式"><span class="toc-number">6.6.</span> <span class="toc-text">Spring处理全局异常的方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis"><span class="toc-number">7.</span> <span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis持久化"><span class="toc-number">7.1.</span> <span class="toc-text">Redis持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis实现分布式锁"><span class="toc-number">7.2.</span> <span class="toc-text">Redis实现分布式锁</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机网络"><span class="toc-number">8.</span> <span class="toc-text">计算机网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程和线程、协程的区别"><span class="toc-number">8.1.</span> <span class="toc-text">进程和线程、协程的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP如何保证可靠传输"><span class="toc-number">8.2.</span> <span class="toc-text">TCP如何保证可靠传输</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP沾包"><span class="toc-number">8.3.</span> <span class="toc-text">TCP沾包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP"><span class="toc-number">8.4.</span> <span class="toc-text">UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何让UDP实现高可靠"><span class="toc-number">8.5.</span> <span class="toc-text">如何让UDP实现高可靠</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP快在哪里"><span class="toc-number">8.6.</span> <span class="toc-text">UDP快在哪里</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP生存周期"><span class="toc-number">8.7.</span> <span class="toc-text">IP生存周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由器和交换机"><span class="toc-number">8.8.</span> <span class="toc-text">路由器和交换机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie和Session"><span class="toc-number">8.9.</span> <span class="toc-text">Cookie和Session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSI七层模型"><span class="toc-number">8.10.</span> <span class="toc-text">OSI七层模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP请求的过程"><span class="toc-number">8.11.</span> <span class="toc-text">HTTP请求的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP各个版本的区别"><span class="toc-number">8.12.</span> <span class="toc-text">HTTP各个版本的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS请求的过程"><span class="toc-number">8.13.</span> <span class="toc-text">HTTPS请求的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ARP"><span class="toc-number">8.14.</span> <span class="toc-text">ARP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设计模式六大原则"><span class="toc-number">9.</span> <span class="toc-text">设计模式六大原则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#项目"><span class="toc-number">10.</span> <span class="toc-text">项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT"><span class="toc-number">10.1.</span> <span class="toc-text">JWT</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HDFS"><span class="toc-number">1.</span> <span class="toc-text">HDFS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#产生背景与意义"><span class="toc-number">1.1.</span> <span class="toc-text">产生背景与意义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景"><span class="toc-number">1.1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-number">1.1.2.</span> <span class="toc-text">定义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优缺点"><span class="toc-number">1.2.</span> <span class="toc-text">优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">1.2.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HDFS组成架构"><span class="toc-number">1.3.</span> <span class="toc-text">HDFS组成架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HDFS文件块大小"><span class="toc-number">1.4.</span> <span class="toc-text">HDFS文件块大小</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HDFS的Shell操作"><span class="toc-number">2.</span> <span class="toc-text">HDFS的Shell操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本语法"><span class="toc-number">2.1.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令"><span class="toc-number">2.2.</span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#上传"><span class="toc-number">2.2.1.</span> <span class="toc-text">上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载"><span class="toc-number">2.2.2.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS直接操作"><span class="toc-number">2.2.3.</span> <span class="toc-text">HDFS直接操作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HDFS的API操作"><span class="toc-number">3.</span> <span class="toc-text">HDFS的API操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境准备"><span class="toc-number">3.1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HDFS的API操作案例"><span class="toc-number">3.2.</span> <span class="toc-text">HDFS的API操作案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS文件上传"><span class="toc-number">3.2.1.</span> <span class="toc-text">HDFS文件上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS文件下载"><span class="toc-number">3.2.2.</span> <span class="toc-text">HDFS文件下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS文件更名和移动"><span class="toc-number">3.2.3.</span> <span class="toc-text">HDFS文件更名和移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS删除文件和目录"><span class="toc-number">3.2.4.</span> <span class="toc-text">HDFS删除文件和目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS文件详情查看"><span class="toc-number">3.2.5.</span> <span class="toc-text">HDFS文件详情查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS文件和文件夹判断"><span class="toc-number">3.2.6.</span> <span class="toc-text">HDFS文件和文件夹判断</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HDFS的读写流程"><span class="toc-number">4.</span> <span class="toc-text">HDFS的读写流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HDFS写数据流程"><span class="toc-number">4.1.</span> <span class="toc-text">HDFS写数据流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#剖析文件写入"><span class="toc-number">4.1.1.</span> <span class="toc-text">剖析文件写入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络拓扑-节点距离计算"><span class="toc-number">4.1.2.</span> <span class="toc-text">网络拓扑-节点距离计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#机架感知（副本存储节点选择）"><span class="toc-number">4.1.3.</span> <span class="toc-text">机架感知（副本存储节点选择）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HDFS的读数据流程"><span class="toc-number">4.2.</span> <span class="toc-text">HDFS的读数据流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NameNode和SecondaryNameNode"><span class="toc-number">5.</span> <span class="toc-text">NameNode和SecondaryNameNode</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NN和2NN工作机制"><span class="toc-number">5.1.</span> <span class="toc-text">NN和2NN工作机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NameNode工作机制"><span class="toc-number">5.1.1.</span> <span class="toc-text">NameNode工作机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fsiamge和Edits解析"><span class="toc-number">5.2.</span> <span class="toc-text">Fsiamge和Edits解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-number">5.2.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oiv查看Fsimage文件"><span class="toc-number">5.2.2.</span> <span class="toc-text">oiv查看Fsimage文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oev查看Edits文件"><span class="toc-number">5.2.3.</span> <span class="toc-text">oev查看Edits文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CheckPoint时间设置"><span class="toc-number">5.3.</span> <span class="toc-text">CheckPoint时间设置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DataNode"><span class="toc-number">6.</span> <span class="toc-text">DataNode</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DataNode工作机制"><span class="toc-number">6.1.</span> <span class="toc-text">DataNode工作机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据完整性"><span class="toc-number">6.2.</span> <span class="toc-text">数据完整性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#掉线时限参数设置"><span class="toc-number">6.3.</span> <span class="toc-text">掉线时限参数设置</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
